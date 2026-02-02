@@ -45,6 +45,40 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
   const seoTitle = "Bistrot a San Martino Buon Albergo (Verona) | Cucina Veneta e Aperitivi – Napoleone";
   const seoDesc = "Bistrot a San Martino Buon Albergo, a pochi minuti da Verona. Cucina veneta, aperitivi, vini selezionati e sala storica per eventi. Prenota ora.";
 
+  // Reviews Data
+  const REVIEWS = [
+    {
+      author: "Giulia B.",
+      text: "Un posto magico nel cuore di Verona. Il servizio è impeccabile e l'arredamento ti trasporta in un'altra epoca. Da non perdere il risotto all'Amarone!",
+      rating: 5,
+      source: "Google"
+    },
+    {
+      author: "Marco R.",
+      text: "Ottimo aperitivo con vini di qualità. L'atmosfera è rilassante e il personale molto gentile. Consigliatissimo per una serata tra amici.",
+      rating: 5,
+      source: "Google"
+    },
+    {
+      author: "Elena V.",
+      text: "Cena squisita! I piatti sono curati nei minimi dettagli e i sapori sono autentici. Torneremo sicuramente.",
+      rating: 5,
+      source: "Google"
+    },
+    {
+      author: "Alessandro P.",
+      text: "Location suggestiva e molto elegante. Ho apprezzato molto la selezione dei vini e la professionalità del sommelier.",
+      rating: 5,
+      source: "Google"
+    },
+    {
+      author: "Francesca L.",
+      text: "Un'esperienza culinaria fantastica. Il risotto è davvero speciale, ma anche i dolci meritano un assaggio. Bravi!",
+      rating: 5,
+      source: "Google"
+    }
+  ];
+
   return (
     <div className="animate-in fade-in duration-1000">
       <SEO title={seoTitle} description={seoDesc} />
@@ -86,8 +120,8 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50">
-          <span className="text-[9px] uppercase tracking-[0.4em] text-white">Scorri</span>
+        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-2 animate-bounce opacity-50 z-20 pb-4">
+          <span className="text-[9px] uppercase tracking-[0.4em] text-white pl-[0.4em]">Scorri</span>
           <div className="w-[1px] h-12 bg-gold"></div>
         </div>
       </section>
@@ -356,6 +390,16 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
       {/* Showcase / Stats - OPTIMIZED FOR MOBILE */}
       <section className="py-12 md:py-24 bg-darkGreen text-white overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-full napoleon-pattern opacity-10"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 relative z-10 mb-12 md:mb-16 text-center">
+          <span className="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-4 block animate-in fade-in slide-in-from-bottom-4 duration-700">
+            {lang === 'it' ? 'La Nostra Storia' : 'Our History'}
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-100">
+            {lang === 'it' ? 'I Numeri di Napoleone' : 'Napoleone in Numbers'}
+          </h2>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 relative z-10">
           {[
             { icon: <Users className="w-6 h-6 md:w-10 md:h-10" />, label: 'Ospiti Felici', val: '50k+' },
@@ -491,16 +535,28 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 md:py-28 bg-cream border-y border-gold/10">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="flex justify-center gap-1 mb-10 text-gold">
-            {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={24} />)}
+      {/* Testimonials - Scrolling Marquee */}
+      <section className="py-12 bg-cream border-y border-gold/10 overflow-hidden">
+        <div className="flex w-full">
+          <div className="flex animate-scroll gap-6 px-3 hover:pause">
+            {[...REVIEWS, ...REVIEWS].map((review, i) => (
+              <div key={i} className="flex-shrink-0 w-[280px] md:w-[400px] bg-white p-6 rounded-2xl shadow-sm border border-gold/10 flex flex-col justify-between select-none">
+                <div>
+                  <div className="flex gap-1 text-gold mb-3">
+                    {[...Array(review.rating)].map((_, j) => <Star key={j} fill="currentColor" size={14} />)}
+                  </div>
+                  <p className="text-darkGreen/80 text-sm md:text-base italic leading-relaxed line-clamp-4">"{review.text}"</p>
+                </div>
+                <div className="mt-4 pt-4 border-t border-darkGreen/5 flex justify-between items-center">
+                  <span className="text-xs font-bold uppercase tracking-wider text-darkGreen">{review.author}</span>
+                  <span className="text-[10px] text-darkGreen/40 uppercase tracking-widest flex items-center gap-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-3 h-3" />
+                    {review.source}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
-          <blockquote className="text-3xl md:text-5xl italic text-darkGreen/90 leading-relaxed mb-10 font-medium">
-            "Un posto magico nel cuore di Verona. Il servizio è impeccabile e l'arredamento ti trasporta in un'altra epoca. Da non perdere il risotto all'Amarone!"
-          </blockquote>
-          <cite className="not-italic text-sm font-bold uppercase tracking-[0.4em] text-gold">— Giulia B., Recensione Google —</cite>
         </div>
       </section>
     </div>

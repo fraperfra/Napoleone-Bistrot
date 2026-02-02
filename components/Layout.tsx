@@ -189,9 +189,10 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
           <div>
             <h4 className="font-serif text-xl text-gold mb-6 uppercase tracking-widest">{t.openingHours}</h4>
             <ul className="text-sm space-y-3 opacity-80">
-              <li className="flex justify-between border-b border-white/5 pb-2"><span>Lun - Gio:</span> <span>08:00 - 01:00</span></li>
-              <li className="flex justify-between border-b border-white/5 pb-2"><span>Ven - Sab:</span> <span>08:00 - 02:30</span></li>
-              <li className="flex justify-between"><span>Domenica:</span> <span className="text-gold font-bold uppercase tracking-tighter">Chiuso</span></li>
+              <li className="flex justify-between border-b border-white/5 pb-2"><span>Lun - Gio:</span> <span>07:30–15, 16:30–22</span></li>
+              <li className="flex justify-between border-b border-white/5 pb-2"><span>Venerdì:</span> <span>07:30–15, 16:30–23</span></li>
+              <li className="flex justify-between border-b border-white/5 pb-2"><span>Sabato:</span> <span>08:00 - 23:00</span></li>
+              <li className="flex justify-between"><span>Domenica:</span> <span>08:00 - 22:00</span></li>
             </ul>
           </div>
 
@@ -200,7 +201,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
             <ul className="text-sm space-y-4 opacity-80">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-gold shrink-0 mt-1" />
-                <span>Via Garibaldi, 23<br/>37121 Verona, IT</span>
+                <span>Piazzetta Napoleone, 3<br/>37036 San Martino B.A. (VR)</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-gold" />

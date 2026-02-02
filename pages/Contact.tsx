@@ -28,7 +28,7 @@ const Contact: React.FC = () => {
                   <MapPin className="text-gold shrink-0" />
                   <div>
                     <p className="font-bold">Indirizzo</p>
-                    <p className="text-sm">Piazzetta Napoleone 3, San Martino Buon Albergo, 37036 (VR)</p>
+                    <p className="text-sm">Piazzetta Napoleone, 3, 37036 San Martino Buon Albergo VR</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -61,10 +61,10 @@ const Contact: React.FC = () => {
                 <h4 className="font-bold uppercase tracking-widest text-xs">Orari di Apertura</h4>
               </div>
               <ul className="text-sm opacity-80 space-y-2">
-                <li className="flex justify-between border-b border-white/10 pb-2"><span>Lun - Gio</span> <span>08:00 - 01:00</span></li>
-                <li className="flex justify-between border-b border-white/10 pb-2"><span>Venerdì</span> <span>08:00 - 02:30</span></li>
-                <li className="flex justify-between border-b border-white/10 pb-2"><span>Sabato</span> <span>08:00 - 02:30</span></li>
-                <li className="flex justify-between"><span>Domenica</span> <span className="text-gold font-bold">Chiuso</span></li>
+                <li className="flex justify-between border-b border-white/10 pb-2"><span>Lun - Gio</span> <span>07:30–15, 16:30–22</span></li>
+                <li className="flex justify-between border-b border-white/10 pb-2"><span>Venerdì</span> <span>07:30–15, 16:30–23</span></li>
+                <li className="flex justify-between border-b border-white/10 pb-2"><span>Sabato</span> <span>08:00 - 23:00</span></li>
+                <li className="flex justify-between"><span>Domenica</span> <span>08:00 - 22:00</span></li>
               </ul>
             </div>
 
