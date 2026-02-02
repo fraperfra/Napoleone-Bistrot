@@ -253,9 +253,9 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                     <UtensilsCrossed size={12} />
                     {lang === 'it' ? 'Perfetto con' : 'Perfect with'}
                   </h5>
-                  <div className="flex flex-wrap justify-center gap-3 items-center max-w-[80%]">
+                  <div className="flex flex-wrap justify-center gap-3 items-center max-w-[90%]">
                     {selectedItem.recommendedPairings.map((pairing, idx) => (
-                      <span key={idx} className="font-serif italic text-darkGreen text-sm border-b border-gold/10 pb-1">
+                      <span key={idx} className="font-serif font-medium text-darkGreen text-base border-b-2 border-gold/30 pb-1">
                         {pairing}
                       </span>
                     ))}
