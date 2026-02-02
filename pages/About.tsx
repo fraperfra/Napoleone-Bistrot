@@ -67,24 +67,29 @@ const About: React.FC = () => {
         {/* Gallery Section */}
         <section>
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="font-serif text-3xl sm:text-4xl mb-4">I Nostri Spazi</h2>
-            <p className="text-darkGreen/60 text-sm uppercase tracking-widest font-bold">Esplora le sale al piano superiore</p>
+            <h2 className="font-serif text-3xl sm:text-4xl mb-4">Il Locale</h2>
+            <p className="text-darkGreen/60 text-sm uppercase tracking-widest font-bold">Esplora le sale e gli spazi del Napoleone</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { id: 'room1', title: 'Sala Napoleone' },
-              { id: 'room2', title: 'Sala Josephine' },
-              { id: 'room3', title: 'Sala dei Fregi' },
-              { id: 'room4', title: 'Terrazza' }
+              { id: 'room1', title: 'Sala Napoleone', description: "L'eleganza imperiale per le tue cene più esclusive, dove ogni dettaglio racconta una storia di nobiltà." },
+              { id: 'room2', title: 'Sala Josephine', description: "Intimità e raffinatezza in un ambiente unico, perfetto per momenti indimenticabili." },
+              { id: 'room3', title: 'Sala dei Fregi', description: "Arte e storia si incontrano sotto soffitti decorati che incantano lo sguardo." },
+              { id: 'room4', title: 'Terrazza', description: "Un respiro d'aria fresca con vista, ideale per aperitivi sotto le stelle." }
             ].map((room) => (
-              <div key={room.id} className="group relative overflow-hidden rounded-3xl shadow-md border border-darkGreen/5 aspect-square">
-                <img 
-                  src={`https://picsum.photos/seed/${room.id}/600/600`} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                  alt={room.title} 
-                />
-                <div className="absolute inset-0 bg-darkGreen/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white font-serif italic text-xl">{room.title}</span>
+              <div key={room.id} className="group bg-white rounded-[2rem] shadow-lg border border-darkGreen/5 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <img 
+                    src={`https://picsum.photos/seed/${room.id}/600/600`} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    alt={room.title} 
+                  />
+                  <div className="absolute inset-0 bg-darkGreen/10 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div className="p-8 text-center">
+                  <h3 className="font-serif text-2xl text-darkGreen mb-3 italic">{room.title}</h3>
+                  <div className="w-12 h-[1px] bg-gold mx-auto mb-4"></div>
+                  <p className="text-darkGreen/60 text-sm leading-relaxed font-serif">{room.description}</p>
                 </div>
               </div>
             ))}

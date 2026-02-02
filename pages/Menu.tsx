@@ -100,12 +100,6 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <button
-              onClick={() => alert('Download in corso...')}
-              className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gold border border-gold/30 rounded-full px-6 py-2 hover:bg-gold hover:text-white transition-all shadow-sm"
-            >
-              <Download size={12} /> {t.downloadPdf}
-            </button>
-            <button
               onClick={() => setShowFilters(!showFilters)}
               className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] px-6 py-2 rounded-full border transition-all shadow-sm ${showFilters ? 'bg-darkGreen text-white border-darkGreen' : 'bg-white border-gold/30 text-gold hover:bg-gold/5'}`}
             >
