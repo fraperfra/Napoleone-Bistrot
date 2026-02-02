@@ -21,12 +21,12 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
   const categories = Object.values(Category);
 
   useEffect(() => {
-    if (selectedItem) {
+    if (selectedItem || showFilters) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [selectedItem]);
+  }, [selectedItem, showFilters]);
   
   const allergensList = [
     { id: 'Lattosio', label: t.lactose, icon: <Milk size={14} /> },
@@ -281,6 +281,39 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
               )}
 
               <button onClick={() => setSelectedItem(null)} className="w-full bg-darkGreen text-white py-4 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-gold transition-all">Torna al Menu</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Filter Modal */}
+      {showFilters && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-darkGreen/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white w-full max-w-2xl border border-darkGreen/10 p-8 shadow-2xl rounded-[2.5rem] relative animate-[fadeInUp_0.4s_ease-out] max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h4 className="font-serif text-xl text-darkGreen italic font-bold">Opzioni di ricerca</h4>
+              <button onClick={() => setShowFilters(false)} className="text-darkGreen/40 hover:text-darkGreen transition-colors p-2 bg-cream/50 rounded-full"><X size={20} /></button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-gold mb-4">Dietary</h5>
+                <div className="flex flex-wrap gap-2">
+                  <button onClick={() => toggleDietary('vegetarian')} className={`px-4 py-2 text-[9px] font-bold uppercase tracking-widest border transition-all rounded-full ${dietaryFilters.vegetarian ? 'bg-sage text-white border-sage' : 'bg-cream/30 border-darkGreen/5 text-darkGreen'}`}>Vegetariano</button>
+                  <button onClick={() => toggleDietary('vegan')} className={`px-4 py-2 text-[9px] font-bold uppercase tracking-widest border transition-all rounded-full ${dietaryFilters.vegan ? 'bg-sage text-white border-sage' : 'bg-cream/30 border-darkGreen/5 text-darkGreen'}`}>Vegano</button>
+                </div>
+              </div>
+              <div>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-gold mb-4">Escludi Allergeni</h5>
+                <div className="flex flex-wrap gap-2">
+                  {allergensList.map(a => (
+                    <button key={a.id} onClick={() => toggleAllergen(a.id)} className={`px-4 py-2 text-[9px] font-bold uppercase tracking-widest border transition-all rounded-full ${excludedAllergens.includes(a.id) ? 'bg-darkGreen text-white border-darkGreen' : 'bg-cream/30 border-darkGreen/5 text-darkGreen'}`}>{a.label}</button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 flex justify-between items-center border-t border-gold/10 pt-6">
+              <button onClick={resetFilters} className="text-[9px] font-bold uppercase tracking-widest text-gold border-b border-gold/30">Ripristina tutto</button>
+              <button onClick={() => setShowFilters(false)} className="bg-darkGreen text-white px-8 py-3 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-gold transition-all shadow-lg">Applica Filtri</button>
             </div>
           </div>
         </div>
