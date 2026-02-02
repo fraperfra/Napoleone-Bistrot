@@ -1,0 +1,7 @@
+{
+  "name": "Napoleone Bistrot",
+  "description": "An elegant Italian restaurant website featuring a classic Napoleonic style with modern web capabilities.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
