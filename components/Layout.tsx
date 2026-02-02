@@ -177,7 +177,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
               <a href="https://instagram.com/napoleonebistrot" target="_blank" rel="noopener noreferrer" className="p-2 border border-gold/30 rounded-full text-gold hover:bg-gold hover:text-darkGreen transition-all">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="p-2 border border-gold/30 rounded-full text-gold hover:bg-gold hover:text-darkGreen transition-all">
+              <a href="https://www.facebook.com/people/Napoleone-Bistrot/61564966481309/" target="_blank" rel="noopener noreferrer" className="p-2 border border-gold/30 rounded-full text-gold hover:bg-gold hover:text-darkGreen transition-all">
                 <Facebook size={18} />
               </a>
               <a href="mailto:info@napoleonebistrot.it" className="p-2 border border-gold/30 rounded-full text-gold hover:bg-gold hover:text-darkGreen transition-all">
