@@ -111,13 +111,6 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
             >
               {t.bookNow}
             </button>
-
-            {/* Scroll indicator between buttons */}
-            <div className="hidden sm:flex flex-col items-center gap-1 animate-bounce opacity-50">
-              <span className="text-[7px] uppercase tracking-[0.3em] text-white pl-[0.3em]">Scorri</span>
-              <div className="w-[1px] h-8 bg-gold"></div>
-            </div>
-
             <button
               onClick={() => setActivePage('menu')}
               className="w-full sm:w-auto bg-transparent border border-white/50 text-white px-8 sm:px-12 py-4 sm:py-5 font-bold uppercase tracking-widest hover:bg-white/10 hover:border-white transition-all backdrop-blur-sm rounded-full text-sm sm:text-base"
@@ -125,12 +118,11 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
               {t.discoverMenu}
             </button>
           </div>
+        </div>
 
-          {/* Scroll indicator for mobile (below buttons) */}
-          <div className="sm:hidden flex flex-col items-center gap-1 animate-bounce opacity-50 mt-8">
-            <span className="text-[7px] uppercase tracking-[0.3em] text-white pl-[0.3em]">Scorri</span>
-            <div className="w-[1px] h-8 bg-gold"></div>
-          </div>
+        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-1 animate-bounce opacity-50 z-20 pb-0">
+          <span className="text-[7px] uppercase tracking-[0.3em] text-white pl-[0.3em]">Scorri</span>
+          <div className="w-[1px] h-8 bg-gold"></div>
         </div>
       </section>
 
