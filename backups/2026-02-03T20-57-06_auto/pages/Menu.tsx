@@ -340,13 +340,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                 </div>
               )}
 
-              {itemHistory.length > 0 ? (
-                <button onClick={handleBack} className="w-full bg-gold text-darkGreen py-4 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-darkGreen hover:text-white transition-all flex items-center justify-center gap-2">
-                  <ChevronLeft size={16} /> Torna Indietro
-                </button>
-              ) : (
-                <button onClick={handleCloseModal} className="w-full bg-darkGreen text-white py-4 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-gold transition-all">Torna al Menu</button>
-              )}
+              <button onClick={handleCloseModal} className="w-full bg-darkGreen text-white py-4 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-gold transition-all">Torna al Menu</button>
             </div>
           </div>
         </div>
