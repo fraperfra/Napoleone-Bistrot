@@ -228,14 +228,22 @@ const Events: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
               }
             ].map((type, i) => (
               <div key={i} className="group cursor-pointer bg-white border border-darkGreen/10 p-4 rounded-3xl shadow-sm hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 overflow-hidden">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="text-3xl">{type.emoji}</div>
-                  <h3 className="font-serif text-2xl md:text-3xl mb-0 group-hover:text-gold transition-colors">{type.title}</h3>
+                <div className="relative aspect-[16/9] overflow-hidden mb-6 rounded-2xl">
+                  <img src={`https://picsum.photos/seed/${type.title.replace(/\s+/g, '-')}/800/600`} alt={type.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute top-4 left-4 bg-gold text-darkGreen px-4 py-2 flex items-center shadow-md rounded-xl font-bold text-xs uppercase tracking-widest">
+                    {type.emoji}
+                  </div>
                 </div>
-                <p className="text-darkGreen/80 leading-relaxed mb-6">{type.desc}</p>
-                <button className="text-gold font-bold text-xs uppercase tracking-widest hover:text-darkGreen transition-colors">
-                  Scopri di Più →
-                </button>
+                <div className="px-4 pb-4">
+                  <h3 className="font-serif text-2xl md:text-3xl mb-3 group-hover:text-gold transition-colors">{type.title}</h3>
+                  <div className="flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-widest mb-4">
+                    <Calendar size={14} /> {type.emoji === '🎤' ? 'Ogni Mercoledì & Venerdì' : 'Su prenotazione'}
+                  </div>
+                  <p className="text-darkGreen/80 leading-relaxed mb-6">{type.desc}</p>
+                  <button className="text-gold font-bold text-xs uppercase tracking-widest hover:text-darkGreen transition-colors">
+                    Scopri di Più →
+                  </button>
+                </div>
               </div>
             ))}
           </div>
