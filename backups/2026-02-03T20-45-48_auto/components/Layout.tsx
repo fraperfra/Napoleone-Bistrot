@@ -73,9 +73,9 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
           <div className="md:hidden absolute left-1/2 -translate-x-1/2">
             <LogoN light={isHeroHeader} />
           </div>
-          {/* Desktop: Logo lungo */}
+          {/* Desktop: Logo N left */}
           <div className="hidden md:block">
-            <Logo light={isHeroHeader} />
+            <LogoN light={isHeroHeader} />
           </div>
 
           {/* Desktop Nav */}
