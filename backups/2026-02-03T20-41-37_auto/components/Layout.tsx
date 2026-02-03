@@ -55,7 +55,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
 
   return (
     <div className="min-h-screen flex flex-col">
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${!isHeroHeader ? 'bg-white/95 backdrop-blur-md shadow-md py-5' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${!isHeroHeader ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-center md:justify-between items-center relative">
           {/* Mobile: Logo centered */}
           <div className="md:hidden absolute left-1/2 -translate-x-1/2">
