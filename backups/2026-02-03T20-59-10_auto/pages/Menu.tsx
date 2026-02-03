@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Category, MenuItem as MenuItemType } from '../types';
 import { MENU_ITEMS } from '../data';
-import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet, GlassWater } from 'lucide-react';
+import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet } from 'lucide-react';
 import { translations } from '../translations';
 import SEO from '../components/SEO';
 
@@ -237,13 +237,6 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                         </div>
                       </div>
                       <div className="text-right">
-                        {/* Wine glass/bottle icons for wine items */}
-                        {(item.subCategory === 'Vini Bianchi' || item.subCategory === 'Vini Rossi' || item.subCategory === 'Bollicine') && typeof item.price === 'string' && item.price.includes('/') && (
-                          <div className="flex gap-3 justify-end mb-1">
-                            <GlassWater size={12} className="text-gold" />
-                            <Wine size={12} className="text-gold" />
-                          </div>
-                        )}
                         <div className="font-serif font-bold text-darkGreen text-lg">
                           {typeof item.price === 'number' ? item.price.toFixed(2).replace('.', ',') : item.price}
                         </div>
