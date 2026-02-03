@@ -130,10 +130,6 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
     }
   };
 
-  const findPairingItem = (pairingName: string) => {
-    return MENU_ITEMS.find(i => i.name.toLowerCase() === pairingName.toLowerCase());
-  };
-
   // Determine SEO Metadata based on active category
   const isAperitivo = activeCategory === Category.Drink || activeCategory === Category.ViniBollicine || activeCategory === Category.Birre;
   const seoTitle = isAperitivo 
