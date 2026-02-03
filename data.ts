@@ -51,7 +51,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 8,
     category: Category.Drink,
     subCategory: 'Drink Classici',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'dcl-2',
@@ -125,7 +126,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 4.5,
     category: Category.Drink,
     subCategory: 'Aperitivi',
-    alcoholLevel: 2
+    alcoholLevel: 2,
+    allergens: ['Solfiti']
   },
   {
     id: 'dap-2',
@@ -152,7 +154,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 4,
     category: Category.Drink,
     subCategory: 'Aperitivi',
-    alcoholLevel: 2
+    alcoholLevel: 2,
+    allergens: ['Solfiti']
   },
   {
     id: 'dap-5',
@@ -161,7 +164,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 6.5,
     category: Category.Drink,
     subCategory: 'Aperitivi',
-    alcoholLevel: 2
+    alcoholLevel: 2,
+    allergens: ['Solfiti']
   },
   {
     id: 'dap-6',
@@ -170,7 +174,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 6,
     category: Category.Drink,
     subCategory: 'Aperitivi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'dap-7',
@@ -179,7 +184,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 7,
     category: Category.Drink,
     subCategory: 'Aperitivi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'dap-8',
@@ -188,7 +194,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 7,
     category: Category.Drink,
     subCategory: 'Aperitivi',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
 
   // --- ANALCOLICI ---
@@ -248,7 +255,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3 / 5,50',
     category: Category.Birre,
     subCategory: 'Birre alla spina',
-    alcoholLevel: 2
+    alcoholLevel: 2,
+    allergens: ['Glutine (cereali)']
   },
   {
     id: 'bir-2',
@@ -257,7 +265,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3 / 5,50',
     category: Category.Birre,
     subCategory: 'Birre alla spina',
-    alcoholLevel: 2
+    alcoholLevel: 2,
+    allergens: ['Glutine (cereali)']
   },
   {
     id: 'bir-3',
@@ -266,7 +275,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3 / 6,50',
     category: Category.Birre,
     subCategory: 'Birre alla spina',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Glutine (cereali)']
   },
 
   // --- CAFFETTERIA ---
@@ -293,7 +303,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.4,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio']
+    allergens: ['Latte']
   },
   {
     id: 'caf-4',
@@ -326,7 +336,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.6,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio']
+    allergens: ['Latte']
   },
   {
     id: 'caf-8',
@@ -335,7 +345,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 2,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio', 'Glutine']
+    allergens: ['Latte', 'Glutine (cereali)']
   },
   {
     id: 'caf-9',
@@ -344,7 +354,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio']
+    allergens: ['Latte']
   },
   {
     id: 'caf-10',
@@ -353,7 +363,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.6,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio']
+    allergens: ['Latte', 'Glutine (cereali)']
   },
   {
     id: 'caf-11',
@@ -362,7 +372,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.9,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio']
+    allergens: ['Latte']
   },
   {
     id: 'caf-12',
@@ -371,7 +381,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 0.5,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio']
+    allergens: ['Latte']
   },
   {
     id: 'caf-13',
@@ -388,7 +398,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 3,
     category: Category.Bar,
     subCategory: 'Caffetteria',
-    allergens: ['Lattosio']
+    allergens: ['Latte']
   },
 
   // --- BEVANDE ---
@@ -470,7 +480,8 @@ export const MENU_ITEMS: MenuItem[] = [
     description: '',
     price: 0.5,
     category: Category.Bar,
-    subCategory: 'Bevande'
+    subCategory: 'Bevande',
+    allergens: ['Solfiti']
   },
   {
     id: 'bev-11',
@@ -478,7 +489,8 @@ export const MENU_ITEMS: MenuItem[] = [
     description: '',
     price: 0.2,
     category: Category.Bar,
-    subCategory: 'Bevande'
+    subCategory: 'Bevande',
+    allergens: ['Solfiti']
   },
 
   // --- DOLCE (BAR) ---
@@ -489,7 +501,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Uova', 'Lattosio']
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte']
   },
   {
     id: 'bar-dol-2',
@@ -498,7 +510,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Frutta a guscio']
+    allergens: ['Glutine (cereali)', 'Frutta a guscio']
   },
   {
     id: 'bar-dol-3',
@@ -507,7 +519,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Uova']
+    allergens: ['Glutine (cereali)', 'Uova']
   },
   {
     id: 'bar-dol-4',
@@ -516,7 +528,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.2,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine']
+    allergens: ['Glutine (cereali)']
   },
   {
     id: 'bar-dol-5',
@@ -525,7 +537,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 2,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Frutta a guscio', 'Lattosio']
+    allergens: ['Glutine (cereali)', 'Frutta a guscio', 'Latte']
   },
   {
     id: 'bar-dol-6',
@@ -534,7 +546,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Uova', 'Frutta a guscio']
+    allergens: ['Glutine (cereali)', 'Uova', 'Frutta a guscio']
   },
   {
     id: 'bar-dol-7',
@@ -543,7 +555,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 3,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Uova', 'Lattosio']
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte']
   },
   {
     id: 'bar-dol-8',
@@ -552,7 +564,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Uova', 'Lattosio']
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte']
   },
   {
     id: 'bar-dol-9',
@@ -561,7 +573,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.3,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Uova', 'Lattosio']
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte']
   },
   {
     id: 'bar-dol-10',
@@ -570,7 +582,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.6,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine', 'Uova', 'Lattosio', 'Frutta a guscio']
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte', 'Frutta a guscio']
   },
   {
     id: 'bar-dol-11',
@@ -579,7 +591,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine']
+    allergens: ['Glutine (cereali)']
   },
   {
     id: 'bar-dol-12',
@@ -588,7 +600,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.5,
     category: Category.Bar,
     subCategory: 'Dolci',
-    allergens: ['Glutine']
+    allergens: ['Glutine (cereali)']
   },
   {
     id: 'bar-dol-13',
@@ -598,7 +610,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Dolci',
     isVegan: true,
-    allergens: ['Glutine']
+    allergens: ['Glutine (cereali)']
   },
 
   // --- SALATO (BAR) ---
@@ -609,7 +621,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 3.5,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Uova', 'Lattosio', 'Pesce'],
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte', 'Pesce', 'Senape'],
     recommendedPairings: ['Spritz Aperol/Campari', 'Coca Cola/Zero Vetro']
   },
   {
@@ -619,7 +631,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 4,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Lattosio'],
+    allergens: ['Glutine (cereali)', 'Latte'],
     recommendedPairings: ['Birra Kuhbacher', 'Coca Cola/Zero Vetro']
   },
   {
@@ -629,7 +641,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 5.5,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Lattosio'],
+    allergens: ['Glutine (cereali)', 'Latte'],
     recommendedPairings: ['Birra IPA Special', 'FuzeTea Pesca/Limone']
   },
   {
@@ -639,7 +651,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 2,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Lattosio', 'Pesce'],
+    allergens: ['Glutine (cereali)', 'Latte', 'Pesce'],
     recommendedPairings: ['Birra Kloster Hell', 'Spritz Aperol/Campari']
   },
   {
@@ -649,7 +661,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 2,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Lattosio'],
+    allergens: ['Glutine (cereali)', 'Latte'],
     recommendedPairings: ['Birra Kloster Hell', 'Coca Cola/Zero Vetro']
   },
   {
@@ -659,7 +671,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 2.5,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Lattosio'],
+    allergens: ['Glutine (cereali)', 'Latte'],
     recommendedPairings: ['Birra IPA Special', 'Valpolicella Classico']
   },
   {
@@ -669,7 +681,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 2.5,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Lattosio'],
+    allergens: ['Glutine (cereali)', 'Latte'],
     recommendedPairings: ['Birra Kuhbacher', 'Valpolicella Classico']
   },
   {
@@ -679,144 +691,114 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 1.8,
     category: Category.Bar,
     subCategory: 'Salato',
-    allergens: ['Glutine', 'Lattosio'],
+    allergens: ['Glutine (cereali)', 'Latte'],
     recommendedPairings: ['Prosecco DOC', 'Spritz Aperol/Campari']
   },
 
 
-  // --- BISTROT - INSALATONE (NEW) ---
+  // --- BISTROT - INSALATONE ---
   {
     id: 'ins-1',
     name: 'Caesar',
-    description: 'Lattuga fresca, petto di pollo grigliato, uovo sodo, crostini, scaglie di parmigiano e salsa Caesar.',
-    price: 11,
+    description: 'Lattuga fresca, Petto di Pollo Grigliato, Uovo Sodo, Crostini, Scaglie di Parmigiano e Salsa Caesar, Pomodorini.',
+    price: 12,
     category: Category.Bistrot,
     subCategory: 'Insalatone',
     image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Glutine', 'Uova', 'Lattosio'],
-    recommendedPairings: ['Acqua Mood', 'Custoza DOC', 'Sauvignon Blanc']
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte', 'Pesce', 'Senape'],
+    recommendedPairings: ['Acqua Mood', 'Custoza DOC']
   },
   {
     id: 'ins-2',
     name: 'Tonno',
-    description: 'Lattuga fresca, pomodori, cipolla rossa, olive e tonno.',
-    price: 11,
+    description: 'Lattuga fresca, Pomodori, Cipolla Rossa, Olive e Tonno, Cetrioli.',
+    price: 12,
     category: Category.Bistrot,
     subCategory: 'Insalatone',
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=400',
     allergens: ['Pesce'],
     recommendedPairings: ['Lugana DOC', 'Acqua Mood']
   },
-  {
-    id: 'ins-3',
-    name: 'Salmone',
-    description: 'Lattuga fresca, avocado, cetrioli, pomodorini e salmone affumicato.',
-    price: 12,
-    category: Category.Bistrot,
-    subCategory: 'Insalatone',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Pesce'],
-    recommendedPairings: ['Prosecco DOC Rosè', 'Gewurztraminer DOC']
-  },
 
   // --- BISTROT - ANTIPASTI ---
   {
     id: 'ant-1',
-    name: 'Tartare di Bufalo',
-    description: 'Carne di bufalo freschissima condita con Olio Extravergine di Oliva, Limone ed Erbe aromatiche.',
-    price: 13,
+    name: 'Capesante con crema di melanzane',
+    description: 'Capesante scottate servite su una vellutata crema di melanzane, accompagnate da taccole tostate.',
+    price: 14,
     category: Category.Bistrot,
     subCategory: 'Antipasti',
     image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&q=80&w=400',
-    recommendedPairings: ['Valpolicella Classico', 'Franciacorta Brut']
+    allergens: ['Molluschi'],
+    recommendedPairings: ['Lugana DOC', 'Prosecco DOC']
   },
   {
     id: 'ant-2',
-    name: 'Parmigiana di Melanzane',
-    description: 'Melanzane grigliate, Pomodoro "Rosso Gargano", Fior di latte e Parmigiano, gratinata al forno.',
-    price: 10,
-    category: Category.Bistrot,
-    subCategory: 'Antipasti',
-    isVegetarian: true,
-    image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Lattosio'],
-    recommendedPairings: ['Chianti Classico', 'Valpolicella Classico']
-  },
-  {
-    id: 'ant-3',
     name: 'Tagliere Misto di Salumi e Formaggi',
-    description: 'Selezione di Salumi e Formaggi locali, accompagnati da Miele, Confetture e Crostini freschi.',
+    description: 'Selezione di Salumi e Formaggi locali, accompagnati da Miele e Mostarda.',
     price: 18,
     category: Category.Bistrot,
     subCategory: 'Antipasti',
     image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Lattosio', 'Glutine'],
+    allergens: ['Latte', 'Glutine (cereali)'],
     recommendedPairings: ['Valpolicella Ripasso', 'Birra IPA Special', 'Prosecco DOC']
-  },
-  {
-    id: 'ant-4',
-    name: 'Trippa con Polenta',
-    description: 'Trippa stufata in Salsa di Pomodoro, servita con morbida Polenta calda.',
-    price: 10,
-    category: Category.Bistrot,
-    subCategory: 'Antipasti',
-    image: 'https://images.unsplash.com/photo-1627042633145-c7644d841e0a?auto=format&fit=crop&q=80&w=400',
-    recommendedPairings: ['Valpolicella Superiore', 'Birra Kuhbacher']
-  },
-  {
-    id: 'ant-5',
-    name: 'Polenta, Gorgonzola, Soppressa, Funghi',
-    description: 'Polenta grigliata, Gorgonzola cremoso, Soppressa con aglio, Funghi trifolati.',
-    price: 12,
-    category: Category.Bistrot,
-    subCategory: 'Antipasti',
-    image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Lattosio', 'Glutine'],
-    recommendedPairings: ['Valpolicella Ripasso', 'Birra IPA Special']
   },
 
   // --- BISTROT - PRIMI ---
   {
     id: 'pri-1',
-    name: 'Gnocchi di Malga al Burro e Salvia',
-    description: 'Gnocchi di Malga fatti a mano mantecati con Burro chiarificato e Salvia.',
+    name: 'Ravioli di Zucca al Burro e Salvia',
+    description: 'Ravioli artigianali ripieni di zucca mantovana, salvia croccante.',
     price: 10,
     category: Category.Bistrot,
     subCategory: 'Primi Piatti',
     isVegetarian: true,
     image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Glutine', 'Lattosio'],
+    allergens: ['Glutine (cereali)', 'Uova', 'Latte'],
     recommendedPairings: ['Soave Classico', 'Lugana Riserva']
   },
   {
     id: 'pri-2',
     name: 'Bigoli al ragù di Cortile',
-    description: 'Bigoli artigianali con ragù di Faraona, Coniglio, Anatra e Gallina.',
+    description: 'Bigoli artigianali con ragù di Faraona, Coniglio, Anatra e Pollo.',
     price: 13,
     category: Category.Bistrot,
     subCategory: 'Primi Piatti',
     image: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Glutine', 'Uova'],
+    allergens: ['Glutine (cereali)', 'Uova'],
     recommendedPairings: ['Valpolicella Classico', 'Chianti Classico']
   },
   {
     id: 'pri-3',
-    name: 'Maccheroncini con Salsiccia, Porri e Ricotta affumicata',
-    description: 'Maccheroncini artigianali con Salsiccia alla piastra, Porri stufati e Ricotta affumicata.',
-    price: 13,
+    name: 'Gnocchetti al Gorgonzola',
+    description: 'Morbidi gnocchetti di patate avvolti in una cremosa salsa al Gorgonzola DOP.',
+    price: 12,
     category: Category.Bistrot,
     subCategory: 'Primi Piatti',
+    isVegetarian: true,
     image: 'https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Glutine', 'Lattosio'],
-    recommendedPairings: ['Valpolicella Superiore', 'Birra IPA Special']
+    allergens: ['Glutine (cereali)', 'Latte'],
+    recommendedPairings: ['Valpolicella Superiore', 'Lugana Riserva']
+  },
+  {
+    id: 'pri-4',
+    name: 'Risotto ai porcini',
+    description: 'Classico risotto ai funghi porcini freschi con fonduta di Monte Veronese. Minimo 2 persone.',
+    price: '14 a persona',
+    category: Category.Bistrot,
+    subCategory: 'Primi Piatti',
+    isVegetarian: true,
+    image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=400',
+    allergens: ['Latte'],
+    recommendedPairings: ['Valpolicella Ripasso', 'Amarone della Valpolicella']
   },
 
   // --- BISTROT - SECONDI ---
   {
     id: 'sec-1',
-    name: 'Tagliata di Bufalo con Verze Sofegae',
-    description: 'Tagliata di Bufalo fresca (circa 250gr) con Verze stufate nel Lardo.',
-    price: 18,
+    name: 'Tagliata di Manzo con Patate al Forno',
+    description: 'Tagliata di Manzo (circa 250gr) con patate al forno.',
+    price: 21,
     category: Category.Bistrot,
     subCategory: 'Secondi Piatti',
     image: 'https://images.unsplash.com/photo-1546241072-48010ad28c2c?auto=format&fit=crop&q=80&w=400',
@@ -825,7 +807,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'sec-2',
     name: 'Galletto CBT con Patate al Forno',
-    description: 'Galletto cotto a bassa temperatura, ripassato in forno, accompagnato da patate.',
+    description: 'Galletto cotto a bassa temperatura, ripassato in forno, accompagnato da patate al forno.',
     price: 18,
     category: Category.Bistrot,
     subCategory: 'Secondi Piatti',
@@ -834,32 +816,32 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'sec-3',
-    name: 'Baccalà alla Vicentina con Polenta',
-    description: 'Baccalà cucinato con Cipolla, Latte e Acciughe, servito con Polenta cremosa.',
-    price: 18,
+    name: 'Branzino all\'acqua pazza',
+    description: 'Filetto di branzino cotto dolcemente in brodetto di pomodorini, aglio, olio e prezzemolo. Un piatto leggero, profumato e tipicamente mediterraneo. Su richiesta.',
+    price: 19,
     category: Category.Bistrot,
     subCategory: 'Secondi Piatti',
     image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Lattosio', 'Pesce'],
-    recommendedPairings: ['Durello Lessini', 'Lugana Riserva']
+    allergens: ['Pesce'],
+    recommendedPairings: ['Lugana DOC', 'Prosecco DOC']
   },
   {
     id: 'sec-4',
-    name: 'Lesso con Pearà',
-    description: 'Selezione di Cotechino, Testina di Vitello, Copertina di Manzo, Lingua, accompagnato dalla tradizionale Pearà.',
-    price: 21,
+    name: 'Tentacoli di Polpo',
+    description: 'Tentacoli di polpo arrostiti, Parmentier di Patate, burrata, pomodori di Pachino confit.',
+    price: 19,
     category: Category.Bistrot,
     subCategory: 'Secondi Piatti',
     image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Glutine'],
-    recommendedPairings: ['Valpolicella Ripasso', 'Amarone della Valpolicella']
+    allergens: ['Molluschi', 'Latte'],
+    recommendedPairings: ['Lugana Riserva', 'Durello Lessini']
   },
 
   // --- BISTROT - CONTORNI ---
   {
     id: 'cnt-1',
     name: 'Patate Arrosto',
-    description: 'Patate cotte al forno con Rosmarino e un filo di Olio Extravergine.',
+    description: 'Patate cotte al forno con Rosmarino.',
     price: 5,
     category: Category.Bistrot,
     subCategory: 'Contorni',
@@ -869,8 +851,8 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: 'cnt-2',
-    name: 'Verdure Grigliate',
-    description: 'Verdure di stagione grigliate, condite con Olio Extravergine e Aromi freschi.',
+    name: 'Caponata di verdure',
+    description: 'Verdure cotte variate, condite con Olio Extravergine.',
     price: 5,
     category: Category.Bistrot,
     subCategory: 'Contorni',
@@ -881,7 +863,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'cnt-3',
     name: 'Insalata Mista',
-    description: 'Insalata con Carote alla Julienne e Pomodoro Ciliegino.',
+    description: 'Insalata mista fresca.',
     price: 5,
     category: Category.Bistrot,
     subCategory: 'Contorni',
@@ -899,7 +881,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bistrot,
     subCategory: 'Dolci',
     image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&q=80&w=400',
-    allergens: ['Lattosio', 'Glutine', 'Uova'],
+    allergens: ['Latte', 'Glutine (cereali)', 'Uova'],
     recommendedPairings: ['Caffè Espresso', 'Liquori vari']
   },
   {
@@ -909,7 +891,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 6,
     category: Category.Bistrot,
     subCategory: 'Dolci',
-    allergens: ['Lattosio', 'Uova'],
+    allergens: ['Latte', 'Uova'],
     recommendedPairings: ['Caffè Espresso', 'Passito']
   },
   {
@@ -919,11 +901,11 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 5,
     category: Category.Bistrot,
     subCategory: 'Dolci',
-    allergens: ['Frutta a guscio', 'Glutine'],
+    allergens: ['Frutta a guscio', 'Glutine (cereali)', 'Latte', 'Uova'],
     recommendedPairings: ['Grappa', 'Caffè Corretto']
   },
 
-  // --- BISTROT - MENU BAMBINI (NEW) ---
+  // --- BISTROT - MENU BAMBINI ---
   {
     id: 'kids-1',
     name: 'Maccheroncini al Pomodoro',
@@ -931,7 +913,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 10,
     category: Category.Bistrot,
     subCategory: 'Menu Bambini',
-    allergens: ['Glutine'],
+    allergens: ['Glutine (cereali)', 'Uova'],
     recommendedPairings: ['Acqua Mood', 'Coca Cola/Zero Vetro']
   },
   {
@@ -941,7 +923,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 12,
     category: Category.Bistrot,
     subCategory: 'Menu Bambini',
-    allergens: ['Glutine', 'Uova'],
+    allergens: ['Glutine (cereali)', 'Uova'],
     recommendedPairings: ['Acqua Mood', 'Coca Cola/Zero Vetro']
   },
 
@@ -953,7 +935,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '4 / 23',
     category: Category.ViniBollicine,
     subCategory: 'Vini Bianchi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'vb-2',
@@ -962,7 +945,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '5 / 29',
     category: Category.ViniBollicine,
     subCategory: 'Vini Bianchi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'vb-3',
@@ -971,7 +955,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '4,5 / 26',
     category: Category.ViniBollicine,
     subCategory: 'Vini Bianchi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'vb-4',
@@ -980,7 +965,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3 / 17',
     category: Category.ViniBollicine,
     subCategory: 'Vini Bianchi',
-    alcoholLevel: 2
+    alcoholLevel: 2,
+    allergens: ['Solfiti']
   },
   {
     id: 'vb-5',
@@ -989,7 +975,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3,5 / 20',
     category: Category.ViniBollicine,
     subCategory: 'Vini Bianchi',
-    alcoholLevel: 2
+    alcoholLevel: 2,
+    allergens: ['Solfiti']
   },
 
   // --- VINI - ROSSI ---
@@ -1000,7 +987,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3,5 / 20',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'vr-2',
@@ -1009,7 +997,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '4 / 23',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'vr-3',
@@ -1018,7 +1007,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '4 / 23',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'vr-4',
@@ -1027,7 +1017,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '5 / 29',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'vr-5',
@@ -1036,7 +1027,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '4,5 / 26',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'vr-6',
@@ -1045,7 +1037,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '4 / 23',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'vr-7',
@@ -1054,7 +1047,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '48',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 5
+    alcoholLevel: 5,
+    allergens: ['Solfiti']
   },
   {
     id: 'vr-8',
@@ -1063,7 +1057,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '35',
     category: Category.ViniBollicine,
     subCategory: 'Vini Rossi',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
 
   // --- BOLLICINE ---
@@ -1074,7 +1069,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3,5 / 21',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'bol-2',
@@ -1083,7 +1079,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '3,5 / 21',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'bol-3',
@@ -1092,7 +1089,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '4 / 23',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 3
+    alcoholLevel: 3,
+    allergens: ['Solfiti']
   },
   {
     id: 'bol-4',
@@ -1101,7 +1099,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '5,5 / 32',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'bol-5',
@@ -1110,7 +1109,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '5,5 / 32',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'bol-6',
@@ -1119,7 +1119,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '6 / 35',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'bol-7',
@@ -1128,7 +1129,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '60',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   },
   {
     id: 'bol-8',
@@ -1137,7 +1139,8 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '65',
     category: Category.ViniBollicine,
     subCategory: 'Bollicine',
-    alcoholLevel: 4
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
   }
 ];
 

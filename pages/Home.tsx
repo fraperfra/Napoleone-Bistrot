@@ -86,7 +86,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1920"
+            src="/hero.avif"
             alt="Interior"
             className="w-full h-full object-cover scale-105 animate-[zoom_20s_infinite_alternate]"
             loading="eager"
@@ -99,7 +99,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
             {t.heroWelcome}
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight opacity-0 animate-[fadeInUp_0.8s_0.4s_forwards]">
-            Napoleone <span className="text-gold italic">Bistrot</span>
+            Napoleone <span className="text-gold italic">{lang === 'it' ? 'Bistrot' : 'Bistro'}</span>
           </h1>
           <p className="text-sm sm:text-base md:text-xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-8 sm:mb-12 opacity-0 animate-[fadeInUp_0.8s_0.6s_forwards]">
             {t.heroSubtitle}
@@ -179,7 +179,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
               <h2 className="text-darkGreen mb-6 tracking-tight font-bold">
                 {lang === 'it' ? 'La Nostra Cucina' : 'Our Kitchen'}
               </h2>
-              <p className="text-darkGreen/60 italic">
+              <p className="text-darkGreen/80 italic">
                 {lang === 'it' 
                   ? "Dalla terra alla tavola, selezioniamo solo il meglio del territorio veronese. Una cucina che parla di storia, passione e autenticità."
                   : "From farm to table, we select only the best of the Veronese territory. A cuisine that speaks of history, passion, and authenticity."}
@@ -226,7 +226,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
                     </div>
                   </div>
                   <h4 className="text-2xl text-darkGreen mb-3 group-hover:text-gold transition-colors font-bold">Km Zero</h4>
-                  <p className="text-darkGreen/60 text-base leading-relaxed font-medium">
+                  <p className="text-darkGreen/80 text-base leading-relaxed font-medium">
                     {lang === 'it' ? 'Materie prime selezionate da piccoli produttori della Lessinia e della Valpolicella.' : 'Raw materials selected from small producers in Lessinia and Valpolicella.'}
                   </p>
                 </div>
@@ -235,7 +235,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
               <div className="bg-darkGreen p-8 rounded-[2.5rem] text-center flex flex-col items-center justify-center gap-4 group cursor-pointer" onClick={() => setActivePage('menu')}>
                 <div className="text-gold mb-2"><Heart size={32} /></div>
                 <h4 className="text-2xl text-white mb-2 font-bold">{lang === 'it' ? 'Fatto a Mano' : 'Handmade'}</h4>
-                <p className="text-white/60 text-base italic leading-relaxed mb-4">
+                <p className="text-white/80 text-base italic leading-relaxed mb-4">
                   {lang === 'it' ? 'Ogni giorno pasta fresca e dolci artigianali.' : 'Fresh pasta and artisanal desserts every day.'}
                 </p>
                 <div className="w-12 h-12 bg-gold text-darkGreen rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -316,7 +316,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-darkGreen mb-6 tracking-tight font-bold">
                 {lang === 'it' ? 'Eventi & Atmosfera' : 'Events & Atmosphere'}
               </h2>
-              <p className="text-darkGreen/60 text-lg sm:text-xl italic leading-relaxed">
+              <p className="text-darkGreen/80 text-lg sm:text-xl italic leading-relaxed">
                 {lang === 'it' 
                   ? "Dal calore delle serate karaoke alla raffinatezza dei nostri eventi privati. Scriviamo insieme le notti più vibranti del centro storico di Verona."
                   : "From the warmth of karaoke nights to the refinement of our private events. Let's write together the most vibrant nights of Verona's historic center."}
@@ -363,10 +363,10 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
                       <div className="bg-white p-3 rounded-2xl shadow-sm text-gold group-hover:bg-gold group-hover:text-darkGreen transition-colors">
                         {event.type === 'karaoke' ? <Music size={20} /> : <Calendar size={20} />}
                       </div>
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-darkGreen/30">{event.date}</span>
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-darkGreen/80">{event.date}</span>
                     </div>
                     <h4 className="text-2xl text-darkGreen mb-3 group-hover:text-gold transition-colors font-bold">{event.title}</h4>
-                    <p className="text-darkGreen/60 text-base leading-relaxed line-clamp-2 font-medium">{event.description}</p>
+                    <p className="text-darkGreen/80 text-base leading-relaxed line-clamp-2 font-medium">{event.description}</p>
                   </div>
                   <div className="mt-8 pt-4 border-t border-darkGreen/5 text-[9px] font-bold uppercase tracking-widest text-gold">
                     {lang === 'it' ? 'Dettagli Evento' : 'Event Details'} +
@@ -376,7 +376,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
               
               {/* Call to Action Card */}
               <div className="bg-darkGreen p-8 rounded-[2.5rem] text-center flex flex-col items-center justify-center gap-4 group cursor-pointer" onClick={() => setActivePage('events')}>
-                <p className="text-white/60 text-[10px] uppercase tracking-widest">{lang === 'it' ? 'Vuoi vedere tutto?' : 'Want to see all?'}</p>
+                <p className="text-white/80 text-[10px] uppercase tracking-widest">{lang === 'it' ? 'Vuoi vedere tutto?' : 'Want to see all?'}</p>
                 <h4 className="text-3xl text-white mb-2 font-bold">{lang === 'it' ? 'Calendario Completo' : 'Full Calendar'}</h4>
                 <div className="w-12 h-12 bg-gold text-darkGreen rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                   <ArrowRight />
@@ -410,7 +410,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
             <div key={i} className="flex flex-col items-center text-center space-y-3 md:space-y-6 group p-4 md:p-8 rounded-2xl md:rounded-3xl hover:bg-white/5 transition-all bg-white/5 md:bg-transparent">
               <div className="text-gold p-3 md:p-6 bg-white/5 rounded-full group-hover:bg-gold group-hover:text-darkGreen transition-all duration-500">{stat.icon}</div>
               <div className="text-2xl md:text-4xl font-bold">{stat.val}</div>
-              <div className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] opacity-60 font-bold">{stat.label}</div>
+              <div className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] opacity-80 font-bold">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -427,7 +427,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
               <h2 className="text-darkGreen mb-6 tracking-tight font-bold">
                 {lang === 'it' ? 'Eventi Privati' : 'Private Events'}
               </h2>
-              <p className="text-darkGreen/60 italic">
+              <p className="text-darkGreen/80 italic">
                 {lang === 'it' 
                   ? "Un ambiente intimo e raffinato, dove la privacy incontra il gusto. La nostra sala storica è la cornice perfetta per i tuoi momenti importanti."
                   : "An intimate and refined environment where privacy meets taste. Our historic room is the perfect setting for your important moments."}
@@ -474,7 +474,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
                     </div>
                   </div>
                   <h4 className="text-2xl text-darkGreen mb-3 group-hover:text-gold transition-colors font-bold">Business</h4>
-                  <p className="text-darkGreen/60 text-base leading-relaxed font-medium">
+                  <p className="text-darkGreen/80 text-base leading-relaxed font-medium">
                     {lang === 'it' ? 'Cene aziendali e meeting con possibilità di proiezione e audio dedicato.' : 'Corporate dinners and meetings with projection and dedicated audio.'}
                   </p>
                 </div>
@@ -483,7 +483,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
               <div className="bg-darkGreen p-8 rounded-[2.5rem] text-center flex flex-col items-center justify-center gap-4 group cursor-pointer" onClick={() => setActivePage('contact')}>
                 <div className="text-gold mb-2"><PartyPopper size={32} /></div>
                 <h4 className="text-2xl text-white mb-2 font-bold">{lang === 'it' ? 'Feste Private' : 'Private Parties'}</h4>
-                <p className="text-white/60 text-base italic leading-relaxed mb-4">
+                <p className="text-white/80 text-base italic leading-relaxed mb-4">
                   {lang === 'it' ? 'Compleanni, lauree e ricorrenze speciali con menu personalizzati.' : 'Birthdays, graduations, and special occasions with personalized menus.'}
                 </p>
                 <div className="w-12 h-12 bg-gold text-darkGreen rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -549,10 +549,12 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
                 </div>
                 <div className="mt-4 pt-4 border-t border-darkGreen/5 flex justify-between items-center">
                   <span className="text-xs font-bold uppercase tracking-wider text-darkGreen">{review.author}</span>
-                  <span className="text-[10px] text-darkGreen/40 uppercase tracking-widest flex items-center gap-1">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-3 h-3" />
-                    {review.source}
-                  </span>
+                  <div className="flex items-center gap-3 group cursor-pointer">
+                    <span className="w-12 h-[1px] bg-darkGreen/20 group-hover:bg-gold transition-colors"></span>
+                    <span className="text-[10px] text-darkGreen/80 uppercase tracking-widest flex items-center gap-1">
+                      Seguici su <Instagram size={14} className="text-gold" />
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
