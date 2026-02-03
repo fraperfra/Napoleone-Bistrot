@@ -56,15 +56,8 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
   return (
     <div className="min-h-screen flex flex-col">
       <nav className={`fixed w-full z-50 transition-all duration-500 ${!isHeroHeader ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-6'}`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-center md:justify-between items-center relative">
-          {/* Mobile: Logo centered */}
-          <div className="md:hidden absolute left-1/2 -translate-x-1/2">
-            <Logo light={isHeroHeader} />
-          </div>
-          {/* Desktop: Logo left */}
-          <div className="hidden md:block">
-            <Logo light={isHeroHeader} />
-          </div>
+        <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
+          <Logo light={isHeroHeader} />
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
@@ -92,8 +85,8 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
           </div>
 
           {/* Mobile Toggle */}
-          <button
-            className={`md:hidden p-4 -mr-4 transition-colors duration-300 absolute right-4 ${isHeroHeader ? 'text-white' : 'text-gold'}`}
+          <button 
+            className={`md:hidden p-4 -mr-4 transition-colors duration-300 ${isHeroHeader ? 'text-white' : 'text-gold'}`} 
             onClick={() => setIsMenuOpen(true)}
             aria-label="Menu"
           >
@@ -116,10 +109,10 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
             <div className="napoleon-pattern absolute inset-0 opacity-10 pointer-events-none"></div>
             
             {/* Header of Modal */}
-            <div className="flex justify-center items-center p-6 relative z-10">
+            <div className="flex justify-between items-center p-6 relative z-10">
               <Logo />
-              <button
-                className="text-gold p-4 hover:bg-gold/10 rounded-full transition-colors absolute right-4"
+              <button 
+                className="text-gold p-4 -mr-4 hover:bg-gold/10 rounded-full transition-colors" 
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close Menu"
               >
