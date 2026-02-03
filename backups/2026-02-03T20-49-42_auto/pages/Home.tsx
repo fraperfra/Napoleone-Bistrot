@@ -94,7 +94,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl pt-28 md:pt-10 pb-24">
+        <div className="relative z-10 text-center text-white px-4 max-w-5xl pt-28 md:pt-10">
           <span className="italic text-base sm:text-lg md:text-xl text-gold mb-2 sm:mb-3 block opacity-0 animate-[fadeInUp_0.8s_0.2s_forwards]">
             {t.heroWelcome}
           </span>
@@ -121,9 +121,9 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
         </div>
 
         {/* Scroll indicator - centered below buttons, line touches bottom */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce opacity-50 z-20 pb-0">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce opacity-50 z-20">
           <span className="text-[7px] uppercase tracking-[0.3em] text-white pl-[0.3em]">Scorri</span>
-          <div className="w-[1px] h-6 bg-gold"></div>
+          <div className="w-[1px] h-10 bg-gold"></div>
         </div>
       </section>
 
