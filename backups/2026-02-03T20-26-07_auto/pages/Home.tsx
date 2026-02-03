@@ -98,10 +98,10 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
           <span className="italic text-base sm:text-lg md:text-xl text-gold mb-2 sm:mb-3 block opacity-0 animate-[fadeInUp_0.8s_0.2s_forwards]">
             {t.heroWelcome}
           </span>
-          <h1 className="font-apothicaire text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium mb-6 sm:mb-8 leading-tight opacity-0 animate-[fadeInUp_0.8s_0.4s_forwards]">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight opacity-0 animate-[fadeInUp_0.8s_0.4s_forwards]">
             Napoleone <span className="text-gold italic">{lang === 'it' ? 'Bistrot' : 'Bistro'}</span>
           </h1>
-          <p className="font-gill text-sm sm:text-base md:text-xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-8 sm:mb-12 opacity-0 animate-[fadeInUp_0.8s_0.6s_forwards]">
+          <p className="text-sm sm:text-base md:text-xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-8 sm:mb-12 opacity-0 animate-[fadeInUp_0.8s_0.6s_forwards]">
             {t.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 opacity-0 animate-[fadeInUp_0.8s_0.8s_forwards]">

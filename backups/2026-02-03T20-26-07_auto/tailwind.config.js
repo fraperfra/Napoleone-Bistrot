@@ -17,8 +17,6 @@ export default {
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'serif'],
         sans: ['Montserrat', 'sans-serif'],
-        apothicaire: ['"Apothicaire Medium"', 'serif'],
-        gill: ['"Gill Sans"', '"Gill Sans MT"', 'Calibri', 'sans-serif'],
       }
     },
   },
