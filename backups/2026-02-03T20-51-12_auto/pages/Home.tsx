@@ -121,8 +121,8 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
         </div>
 
         {/* Scroll indicator - centered below buttons, line touches bottom */}
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-1 animate-bounce opacity-50 z-20">
-          <span className="text-[7px] uppercase tracking-[0.3em] text-white text-center">Scorri</span>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce opacity-50 z-20 pb-0">
+          <span className="text-[7px] uppercase tracking-[0.3em] text-white pl-[0.3em]">Scorri</span>
           <div className="w-[1px] h-6 bg-gold"></div>
         </div>
       </section>
