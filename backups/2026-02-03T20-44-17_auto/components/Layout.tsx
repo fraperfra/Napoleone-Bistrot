@@ -43,24 +43,12 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
     { id: 'contact', label: t.contact },
   ];
 
-  // Logo N per header
-  const LogoN = ({ light = false }: { light?: boolean }) => (
-    <div className="flex items-center cursor-pointer" onClick={() => { setActivePage('home'); setIsMenuOpen(false); }}>
-      <img
-        src={light ? "/logo-n-white.png" : "/logo-n-dark.png"}
-        alt="Napoleone Bistrot"
-        className="h-14 w-auto object-contain transition-all duration-300"
-      />
-    </div>
-  );
-
-  // Logo lungo per dropdown menu
   const Logo = ({ light = false }: { light?: boolean }) => (
     <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setActivePage('home'); setIsMenuOpen(false); }}>
-      <img
-        src={light ? "/logo-long-white.png" : "/logo-long-dark.png"}
-        alt="Napoleone Bistrot"
-        className={`${light ? 'h-16' : 'h-12'} w-auto object-contain transition-all duration-300`}
+      <img 
+        src={light ? "/logo-long-white.png" : "/logo-long-dark.png"} 
+        alt="Napoleone Bistrot" 
+        className={`${light ? 'h-16' : 'h-12'} w-auto object-contain transition-all duration-300`} 
       />
     </div>
   );
@@ -69,13 +57,13 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
     <div className="min-h-screen flex flex-col">
       <nav className={`fixed w-full z-50 transition-all duration-500 ${!isHeroHeader ? 'bg-white/95 backdrop-blur-md shadow-md py-8' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-center md:justify-between items-center relative">
-          {/* Mobile: Logo N centered */}
+          {/* Mobile: Logo centered */}
           <div className="md:hidden absolute left-1/2 -translate-x-1/2">
-            <LogoN light={isHeroHeader} />
+            <Logo light={isHeroHeader} />
           </div>
-          {/* Desktop: Logo N left */}
+          {/* Desktop: Logo left */}
           <div className="hidden md:block">
-            <LogoN light={isHeroHeader} />
+            <Logo light={isHeroHeader} />
           </div>
 
           {/* Desktop Nav */}
