@@ -60,7 +60,7 @@ const Events: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                 <div className="flex items-center gap-2 text-sage font-bold text-xs uppercase tracking-widest mb-4">
                   <Calendar size={14} /> {event.date}
                 </div>
-                <p className="text-darkGreen/70 leading-relaxed">{event.description}</p>
+                <p className="text-darkGreen/80 leading-relaxed">{event.description}</p>
               </div>
             </div>
           ))}

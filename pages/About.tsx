@@ -20,7 +20,7 @@ const About: React.FC = () => {
             <div className="bg-cream p-6 sm:p-10 md:p-12 flex flex-col justify-center text-left space-y-6 rounded-3xl shadow-sm border border-darkGreen/5">
               <h3 className="font-serif text-2xl sm:text-3xl text-gold">Tradizione e Innovazione</h3>
               <p className="text-darkGreen/80 leading-relaxed">
-                Situato in un edificio storico di Verona, il Napoleone Bistrot nasce come un omaggio all'epoca dell'eleganza classica, reinterpretata per il pubblico contemporaneo.
+                Situato in un edificio storico in provincia di Verona, il Napoleone Bistrot nasce come un omaggio all'epoca dell'eleganza classica, reinterpretata per il pubblico contemporaneo.
               </p>
               <p className="text-darkGreen/80 leading-relaxed">
                 Ogni dettaglio, dai marmi ai tessuti, è stato scelto per creare un'atmosfera sospesa nel tempo, dove la nobiltà del passato incontra il dinamismo del presente.
@@ -32,7 +32,7 @@ const About: React.FC = () => {
                 </div>
                 <div>
                   <div className="font-serif text-4xl font-bold text-darkGreen">100%</div>
-                  <div className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Passione Veronese</div>
+                  <div className="text-[10px] uppercase tracking-widest text-darkGreen/70 font-bold">Passione Veronese</div>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@ const About: React.FC = () => {
         <section>
           <div className="text-center mb-10 md:mb-16">
             <h2 className="font-serif text-3xl sm:text-4xl mb-4">Il Locale</h2>
-            <p className="text-darkGreen/60 text-sm uppercase tracking-widest font-bold">Esplora le sale e gli spazi del Napoleone</p>
+            <p className="text-darkGreen/80 text-sm uppercase tracking-widest font-bold">Esplora le sale e gli spazi del Napoleone</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -89,7 +89,7 @@ const About: React.FC = () => {
                 <div className="p-8 text-center">
                   <h3 className="font-serif text-2xl text-darkGreen mb-3 italic">{room.title}</h3>
                   <div className="w-12 h-[1px] bg-gold mx-auto mb-4"></div>
-                  <p className="text-darkGreen/60 text-sm leading-relaxed font-serif">{room.description}</p>
+                  <p className="text-darkGreen/80 text-sm leading-relaxed font-serif">{room.description}</p>
                 </div>
               </div>
             ))}

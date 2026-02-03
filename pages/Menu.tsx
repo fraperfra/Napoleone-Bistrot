@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Category, MenuItem as MenuItemType } from '../types';
 import { MENU_ITEMS } from '../data';
-import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine } from 'lucide-react';
+import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet } from 'lucide-react';
 import { translations } from '../translations';
 import SEO from '../components/SEO';
 
@@ -16,6 +16,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
   const [excludedAllergens, setExcludedAllergens] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItemType | null>(null);
+  const [itemHistory, setItemHistory] = useState<MenuItemType[]>([]);
   
   const t = translations[lang];
   const categories = Object.values(Category);
@@ -29,18 +30,41 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
   }, [selectedItem, showFilters]);
   
   const allergensList = [
-    { id: 'Lattosio', label: t.lactose, icon: <Milk size={14} /> },
-    { id: 'Glutine', label: t.gluten, icon: <Wheat size={14} /> },
-    { id: 'Frutta a guscio', label: t.nuts, icon: <Shell size={14} /> },
+    { id: 'Glutine (cereali)', label: t.gluten, icon: <Wheat size={14} /> },
+    { id: 'Crostacei', label: t.crustaceans, icon: <Shell size={14} /> },
     { id: 'Uova', label: t.eggs, icon: <Egg size={14} /> },
+    { id: 'Pesce', label: t.fish, icon: <Fish size={14} /> },
+    { id: 'Arachidi', label: t.peanuts, icon: <CircleDot size={14} /> },
+    { id: 'Soia', label: t.soy, icon: <Bean size={14} /> },
+    { id: 'Latte', label: t.lactose, icon: <Milk size={14} /> },
+    { id: 'Frutta a guscio', label: t.nuts, icon: <Shell size={14} /> },
+    { id: 'Sedano', label: t.celery, icon: <Carrot size={14} /> },
+    { id: 'Senape', label: t.mustard, icon: <Droplet size={14} /> },
+    { id: 'Sesamo', label: t.sesame, icon: <CircleDot size={14} /> },
+    { id: 'Solfiti', label: t.sulphites, icon: <Wine size={14} /> },
+    { id: 'Lupini', label: t.lupin, icon: <Bean size={14} /> },
+    { id: 'Molluschi', label: t.molluscs, icon: <Shell size={14} /> },
   ];
 
   const getAllergenIcon = (allergenName: string) => {
     switch (allergenName) {
-      case 'Lattosio': return <Milk size={14} className="text-gold" />;
-      case 'Glutine': return <Wheat size={14} className="text-gold" />;
-      case 'Frutta a guscio': return <Shell size={14} className="text-gold" />;
+      case 'Glutine (cereali)': return <Wheat size={14} className="text-gold" />;
+      case 'Crostacei': return <Shell size={14} className="text-gold" />;
       case 'Uova': return <Egg size={14} className="text-gold" />;
+      case 'Pesce': return <Fish size={14} className="text-gold" />;
+      case 'Arachidi': return <CircleDot size={14} className="text-gold" />;
+      case 'Soia': return <Bean size={14} className="text-gold" />;
+      case 'Latte': return <Milk size={14} className="text-gold" />;
+      case 'Frutta a guscio': return <Shell size={14} className="text-gold" />;
+      case 'Sedano': return <Carrot size={14} className="text-gold" />;
+      case 'Senape': return <Droplet size={14} className="text-gold" />;
+      case 'Semi di sesamo': return <CircleDot size={14} className="text-gold" />;
+      case 'Solfiti': return <Wine size={14} className="text-gold" />;
+      case 'Lupini': return <Bean size={14} className="text-gold" />;
+      case 'Molluschi': return <Shell size={14} className="text-gold" />;
+      // Fallback for old keys if any remain
+      case 'Glutine': return <Wheat size={14} className="text-gold" />;
+      case 'Lattosio': return <Milk size={14} className="text-gold" />;
       default: return <Info size={14} className="text-gold" />;
     }
   };
@@ -76,6 +100,34 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
   const resetFilters = () => {
     setDietaryFilters({ vegetarian: false, vegan: false, glutenFree: false });
     setExcludedAllergens([]);
+  };
+
+  const handleItemClick = (item: MenuItemType) => {
+    setSelectedItem(item);
+    setItemHistory([]);
+  };
+
+  const handlePairingClick = (pairingName: string) => {
+    const foundItem = MENU_ITEMS.find(i => i.name.toLowerCase() === pairingName.toLowerCase());
+    if (foundItem && selectedItem) {
+      setItemHistory(prev => [...prev, selectedItem]);
+      setSelectedItem(foundItem);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedItem(null);
+    setItemHistory([]);
+  };
+
+  const handleBack = () => {
+    if (itemHistory.length > 0) {
+      const prevItem = itemHistory[itemHistory.length - 1];
+      setSelectedItem(prevItem);
+      setItemHistory(prev => prev.slice(0, -1));
+    } else {
+      handleCloseModal();
+    }
   };
 
   // Determine SEO Metadata based on active category
@@ -114,7 +166,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-8 py-3 font-serif text-lg tracking-widest transition-all duration-300 rounded-full border ${activeCategory === cat ? 'bg-gold text-white border-gold shadow-xl -translate-y-1' : 'bg-white/50 border-transparent text-darkGreen/40 hover:text-darkGreen hover:bg-white'}`}
+              className={`px-8 py-3 font-serif text-lg tracking-widest transition-all duration-300 rounded-full border ${activeCategory === cat ? 'bg-gold text-white border-gold shadow-xl -translate-y-1' : 'bg-white/50 border-transparent text-darkGreen/80 hover:text-darkGreen hover:bg-white'}`}
             >
               {cat}
             </button>
@@ -126,7 +178,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
           <div className="max-w-2xl mx-auto mb-16 bg-white border border-darkGreen/10 shadow-2xl p-8 rounded-[2rem] animate-fade-in">
             <div className="flex justify-between items-center mb-6">
               <h4 className="font-serif text-xl text-darkGreen italic font-bold">Opzioni di ricerca</h4>
-              <button onClick={() => setShowFilters(false)} className="text-darkGreen/40 hover:text-darkGreen transition-colors"><X size={20} /></button>
+              <button onClick={() => setShowFilters(false)} className="text-darkGreen/80 hover:text-darkGreen transition-colors"><X size={20} /></button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div>
@@ -162,7 +214,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                   {items.map((item, idx) => (
                     <div
                       key={item.id}
-                      onClick={() => setSelectedItem(item)}
+                      onClick={() => handleItemClick(item)}
                       className="group flex items-center justify-between p-4 rounded-2xl border border-transparent hover:border-gold/20 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer"
                     >
                       <div className="flex items-center gap-5 flex-grow">
@@ -177,7 +229,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                         )}
                         <div className="flex flex-col pr-8">
                           <h4 className="font-serif font-bold text-darkGreen group-hover:text-gold transition-colors mb-1">{item.name}</h4>
-                          <p className="text-darkGreen/60 italic line-clamp-1 font-serif">{item.description}</p>
+                          <p className="text-darkGreen/80 italic line-clamp-1 font-serif">{item.description}</p>
                         </div>
                       </div>
                       <div className="text-right">
@@ -186,7 +238,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                         </div>
                         <div className="flex gap-1 justify-end mt-1">
                           {item.isVegan && <Leaf size={10} className="text-sage" />}
-                          {item.isVegetarian && !item.isVegan && <Leaf size={10} className="text-sage/60" />}
+                          {item.isVegetarian && !item.isVegan && <Leaf size={10} className="text-sage/80" />}
                         </div>
                       </div>
                     </div>
@@ -197,15 +249,15 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
           </div>
         ) : (
           <div className="text-center py-20 bg-white/50 rounded-[3rem] border border-gold/10">
-            <h3 className="font-serif text-2xl text-darkGreen/40 italic">Nessun articolo trovato per i filtri selezionati.</h3>
+            <h3 className="font-serif text-2xl text-darkGreen/80 italic">Nessun articolo trovato per i filtri selezionati.</h3>
             <button onClick={resetFilters} className="mt-4 text-gold font-bold uppercase text-[10px] tracking-widest">Mostra tutto il menu</button>
           </div>
         )}
 
         {/* Footer Info */}
         <div className="mt-20 p-8 border-t border-gold/10 text-center flex flex-col gap-2">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/30">Coperto € 2,00</p>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/30">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">Coperto € 2,00</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">
             {lang === 'it' ? 'Allergie o intolleranze alimentari? Chiedi allo staff.' : 'Allergies or food intolerances? Ask the staff.'}
           </p>
         </div>
@@ -215,14 +267,14 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
       {selectedItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-darkGreen/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-cream w-full max-w-sm border-2 border-gold p-6 md:p-10 shadow-2xl rounded-[2.5rem] relative animate-[fadeInUp_0.4s_ease-out] max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setSelectedItem(null)} className="absolute top-4 right-4 md:top-6 md:right-6 text-darkGreen/40 hover:text-darkGreen transition-colors p-3 bg-white/50 rounded-full"><X size={24} /></button>
+            <button onClick={() => setSelectedItem(null)} className="absolute top-4 right-4 md:top-6 md:right-6 text-darkGreen/80 hover:text-darkGreen transition-colors p-3 bg-white/50 rounded-full"><X size={24} /></button>
             <div className="flex flex-col items-center text-center pt-4">
               <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-xl mb-6 flex-shrink-0">
                 <img src={selectedItem.image || 'https://picsum.photos/seed/placeholder/300/300'} alt={selectedItem.name} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif text-3xl font-bold text-darkGreen mb-2">{selectedItem.name}</h3>
               <p className="text-gold font-bold uppercase tracking-[0.2em] text-[10px] mb-4">{selectedItem.subCategory || selectedItem.category}</p>
-              <p className="font-serif italic text-darkGreen/70 leading-relaxed mb-6">{selectedItem.description}</p>
+              <p className="font-serif italic text-darkGreen/80 leading-relaxed mb-6">{selectedItem.description}</p>
 
               {/* ALCOHOL LEVEL */}
               {selectedItem.alcoholLevel !== undefined && selectedItem.alcoholLevel > 0 && (
@@ -242,39 +294,49 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
 
               {/* RECOMMENDED PAIRINGS */}
               {selectedItem.recommendedPairings && selectedItem.recommendedPairings.length > 0 && (
-                <div className="mt-8 mb-8 w-full animate-fade-in flex flex-col items-center">
-                  <h5 className="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 text-center flex items-center justify-center gap-2">
+                <div className="my-4 w-full animate-fade-in flex flex-col items-center">
+                  <h5 className="text-[10px] font-bold uppercase tracking-widest text-gold mb-2 text-center flex items-center justify-center gap-2">
                     <UtensilsCrossed size={12} />
                     {lang === 'it' ? 'Perfetto con' : 'Perfect with'}
                   </h5>
-                  <div className="flex flex-wrap justify-center gap-3 items-center max-w-[90%]">
-                    {selectedItem.recommendedPairings.map((pairing, idx) => (
-                      <span key={idx} className="font-serif font-medium text-darkGreen text-base border-b-2 border-gold/30 pb-1">
-                        {pairing}
-                      </span>
-                    ))}
+                  <div className="flex flex-wrap justify-center gap-2 items-center max-w-[90%]">
+                    {selectedItem.recommendedPairings.map((pairing, idx) => {
+                      const isLinkable = findPairingItem(pairing);
+                      return isLinkable ? (
+                        <button 
+                          key={idx} 
+                          onClick={() => handlePairingClick(pairing)}
+                          className="font-serif font-medium text-darkGreen text-sm border-b border-gold/30 pb-0.5 hover:text-gold hover:border-gold transition-colors"
+                        >
+                          {pairing}
+                        </button>
+                      ) : (
+                        <span key={idx} className="font-serif font-medium text-darkGreen/70 text-sm border-b border-transparent pb-0.5">
+                          {pairing}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               )}
               
               {/* RESTORED ALLERGENS INFO SECTION */}
               {selectedItem.allergens && selectedItem.allergens.length > 0 && (
-                <div className="mb-10 w-full">
-                  <h5 className="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 text-center">
+                <div className="mb-8 w-full">
+                  <h5 className="text-[10px] font-bold uppercase tracking-widest text-gold mb-3 text-center">
                     {lang === 'it' ? 'Allergeni Presenti' : 'Allergens Present'}
                   </h5>
-                  <div className="flex flex-wrap justify-center gap-3">
+                  <div className="flex flex-wrap justify-center gap-2">
                     {selectedItem.allergens.map(a => (
-                      <div key={a} className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-gold/10 shadow-sm text-[10px] text-darkGreen font-bold uppercase tracking-wide">
+                      <div key={a} title={a} className="flex items-center justify-center bg-white p-2 rounded-full border border-gold/10 shadow-sm text-darkGreen hover:scale-110 transition-transform">
                         {getAllergenIcon(a)}
-                        <span>{a}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
 
-              <button onClick={() => setSelectedItem(null)} className="w-full bg-darkGreen text-white py-4 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-gold transition-all">Torna al Menu</button>
+              <button onClick={handleCloseModal} className="w-full bg-darkGreen text-white py-4 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-gold transition-all">Torna al Menu</button>
             </div>
           </div>
         </div>
@@ -286,7 +348,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
           <div className="bg-white w-full max-w-2xl border border-darkGreen/10 p-8 shadow-2xl rounded-[2.5rem] relative animate-[fadeInUp_0.4s_ease-out] max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
               <h4 className="font-serif text-xl text-darkGreen italic font-bold">Opzioni di ricerca</h4>
-              <button onClick={() => setShowFilters(false)} className="text-darkGreen/40 hover:text-darkGreen transition-colors p-2 bg-cream/50 rounded-full"><X size={20} /></button>
+              <button onClick={() => setShowFilters(false)} className="text-darkGreen/80 hover:text-darkGreen transition-colors p-2 bg-cream/50 rounded-full"><X size={20} /></button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Instagram, Clock, Car } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -13,7 +12,7 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         <header className="text-center mb-10 md:mb-16">
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl mb-6">Prenotazioni & Contatti</h1>
-          <p className="italic text-darkGreen/70 text-sm sm:text-base">
+          <p className="italic text-darkGreen/90 text-sm sm:text-base">
             Siamo a vostra completa disposizione per info e prenotazioni tavoli o eventi.
           </p>
         </header>
@@ -28,28 +27,30 @@ const Contact: React.FC = () => {
                   <MapPin className="text-gold shrink-0" />
                   <div>
                     <p className="font-bold">Indirizzo</p>
-                    <p className="text-sm">Piazzetta Napoleone, 3, 37036 San Martino Buon Albergo VR</p>
+                    <a href="https://maps.app.goo.gl/3Q8Q8Q8Q8Q8Q8Q8Q8" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-gold transition-colors">
+                      Piazzetta Napoleone, 3, 37036 San Martino Buon Albergo VR
+                    </a>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <Phone className="text-gold shrink-0" />
                   <div>
                     <p className="font-bold">Telefono</p>
-                    <p className="text-sm">+39 045 23 76 868</p>
+                    <a href="tel:+390452376868" className="text-sm hover:text-gold transition-colors">+39 045 23 76 868</a>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <Mail className="text-gold shrink-0" />
                   <div>
                     <p className="font-bold">Email</p>
-                    <p className="text-sm">info@napoleonebistrot.it</p>
+                    <a href="mailto:info@napoleonebistrot.it" className="text-sm hover:text-gold transition-colors">info@napoleonebistrot.it</a>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <Instagram className="text-gold shrink-0" />
                   <div>
                     <p className="font-bold">Social</p>
-                    <p className="text-sm">@napoleonebistrot</p>
+                    <a href="https://www.instagram.com/napoleonebistrot/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-gold transition-colors">@napoleonebistrot</a>
                   </div>
                 </div>
               </div>
@@ -72,9 +73,9 @@ const Contact: React.FC = () => {
               <Car className="text-gold shrink-0" />
               <div>
                 <h4 className="font-bold text-xs uppercase tracking-widest mb-1">Parcheggio</h4>
-                <p className="text-xs text-darkGreen/60 leading-relaxed">
-                  Convenzione con Parcheggio Arena (5 min a piedi). Segnalaci la targa al tuo arrivo.
-                </p>
+                <a href="https://maps.app.goo.gl/3Q8Q8Q8Q8Q8Q8Q8Q8" target="_blank" rel="noopener noreferrer" className="text-xs text-darkGreen/80 leading-relaxed hover:text-gold transition-colors">
+                  Parcheggio gratuito a 5 minuti a piedi.
+                </a>
               </div>
             </div>
           </div>
@@ -85,19 +86,19 @@ const Contact: React.FC = () => {
               <h3 className="font-serif text-3xl mb-8">Modulo Prenotazione Tavolo</h3>
               <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/50">Nome Completo</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/80">Nome Completo</label>
                   <input type="text" className="w-full p-4 bg-cream/30 border border-darkGreen/5 focus:ring-1 focus:ring-gold outline-none transition-all rounded-xl" placeholder="Es. Mario Rossi" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/50">Email</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/80">Email</label>
                   <input type="email" className="w-full p-4 bg-cream/30 border border-darkGreen/5 focus:ring-1 focus:ring-gold outline-none transition-all rounded-xl" placeholder="mario@email.it" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/50">Data</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/80">Data</label>
                   <input type="date" className="w-full p-4 bg-cream/30 border border-darkGreen/5 focus:ring-1 focus:ring-gold outline-none transition-all rounded-xl" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/50">Ora</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/80">Ora</label>
                   <select className="w-full p-4 bg-cream/30 border border-darkGreen/5 focus:ring-1 focus:ring-gold outline-none transition-all rounded-xl">
                     <option>19:30</option>
                     <option>20:00</option>
@@ -106,25 +107,25 @@ const Contact: React.FC = () => {
                   </select>
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/50">Numero di Persone</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/80">Numero di Persone</label>
                   <input type="number" min="1" max="20" className="w-full p-4 bg-cream/30 border border-darkGreen/5 focus:ring-1 focus:ring-gold outline-none transition-all rounded-xl" defaultValue="2" />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/50">Note (Allergie, Eventi Speciali)</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/80">Note (Allergie, Eventi Speciali)</label>
                   <textarea className="w-full p-4 bg-cream/30 border border-darkGreen/5 focus:ring-1 focus:ring-gold outline-none transition-all rounded-xl" rows={4}></textarea>
                 </div>
                 <div className="md:col-span-2">
                   <button className="w-full bg-darkGreen text-white py-5 font-bold uppercase tracking-widest shadow-lg hover:bg-gold hover:text-darkGreen transition-all transform hover:-translate-y-1 rounded-xl">
                     Invia Prenotazione
                   </button>
-                  <p className="text-[10px] text-center mt-4 opacity-50">
+                  <p className="text-[10px] text-center mt-4 text-darkGreen/70">
                     Riceverai una mail di conferma entro 15 minuti.
                   </p>
                 </div>
               </form>
             </div>
 
-            {/* Google Maps (Placeholder Iframe) */}
+            {/* Google Maps */}
             <div className="h-96 w-full bg-gray-100 grayscale hover:grayscale-0 transition-all duration-1000 border border-darkGreen/10 rounded-3xl overflow-hidden shadow-sm">
               <iframe
                 title="Napoleone Bistrot Position"

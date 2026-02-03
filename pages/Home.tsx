@@ -86,7 +86,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/hero.avif"
+            src="/hero.jpg"
             alt="Interior"
             className="w-full h-full object-cover scale-105 animate-[zoom_20s_infinite_alternate]"
             loading="eager"
@@ -94,8 +94,8 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl pt-20 md:pt-0">
-          <span className="italic text-base sm:text-lg md:text-xl text-gold mb-4 sm:mb-6 block opacity-0 animate-[fadeInUp_0.8s_0.2s_forwards]">
+        <div className="relative z-10 text-center text-white px-4 max-w-5xl pt-28 md:pt-10">
+          <span className="italic text-base sm:text-lg md:text-xl text-gold mb-2 sm:mb-3 block opacity-0 animate-[fadeInUp_0.8s_0.2s_forwards]">
             {t.heroWelcome}
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight opacity-0 animate-[fadeInUp_0.8s_0.4s_forwards]">
@@ -120,9 +120,9 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-2 animate-bounce opacity-50 z-20 pb-4">
-          <span className="text-[9px] uppercase tracking-[0.4em] text-white pl-[0.4em]">Scorri</span>
-          <div className="w-[1px] h-12 bg-gold"></div>
+        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-1 animate-bounce opacity-50 z-20 pb-0">
+          <span className="text-[7px] uppercase tracking-[0.3em] text-white pl-[0.3em]">Scorri</span>
+          <div className="w-[1px] h-8 bg-gold"></div>
         </div>
       </section>
 
