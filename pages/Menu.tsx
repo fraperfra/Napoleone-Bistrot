@@ -2,12 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { Category, MenuItem as MenuItemType } from '../types';
 import { MENU_ITEMS } from '../data';
-import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet, GlassWater } from 'lucide-react';
+import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet, GlassWater, Beer, Bottle } from 'lucide-react';
 import { translations } from '../translations';
 import SEO from '../components/SEO';
 
-const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
-  const [activeCategory, setActiveCategory] = useState<Category>(Category.Bistrot);
+const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = ({ lang, initialCategory }) => {
+  const [activeCategory, setActiveCategory] = useState<Category>(() => {
+    if (initialCategory && Object.values(Category).includes(initialCategory as Category)) {
+      return initialCategory as Category;
+    }
+    return Category.Bistrot;
+  });
   const [dietaryFilters, setDietaryFilters] = useState({
     vegetarian: false,
     vegan: false,
@@ -165,12 +170,12 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
         </header>
 
         {/* Categories Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12 px-2">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-8 py-3 font-serif text-lg tracking-widest transition-all duration-300 rounded-full border ${activeCategory === cat ? 'bg-gold text-white border-gold shadow-xl -translate-y-1' : 'bg-white/50 border-transparent text-darkGreen/80 hover:text-darkGreen hover:bg-white'}`}
+              className={`px-5 md:px-8 py-2.5 md:py-3 font-serif font-semibold text-sm md:text-lg tracking-wider md:tracking-widest transition-all duration-300 rounded-full border ${activeCategory === cat ? 'bg-gold text-white border-gold shadow-xl -translate-y-1' : 'bg-white/80 border-gold/20 text-darkGreen hover:text-darkGreen hover:bg-white hover:border-gold/40'}`}
             >
               {cat}
             </button>
@@ -214,42 +219,63 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
                   <h3 className="text-darkGreen font-bold tracking-tight font-serif">{sub}</h3>
                   <div className="h-[1px] flex-grow bg-gold/20"></div>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 md:gap-y-6">
                   {items.map((item, idx) => (
                     <div
                       key={item.id}
                       onClick={() => handleItemClick(item)}
-                      className="group flex items-center justify-between p-4 rounded-2xl border border-transparent hover:border-gold/20 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer"
+                      className="group flex items-center justify-between p-3 md:p-4 rounded-2xl border border-transparent hover:border-gold/20 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer gap-3"
                     >
-                      <div className="flex items-center gap-5 flex-grow">
+                      <div className="flex items-center gap-3 md:gap-5 flex-grow min-w-0">
                         {item.image ? (
-                          <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm flex-shrink-0 group-hover:scale-110 transition-transform">
+                          <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl overflow-hidden shadow-sm flex-shrink-0 group-hover:scale-110 transition-transform">
                             <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                           </div>
                         ) : (
-                          <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-colors">
-                            <Info size={24} />
+                          <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-cream flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-colors flex-shrink-0">
+                            <Info size={20} className="md:w-6 md:h-6" />
                           </div>
                         )}
-                        <div className="flex flex-col pr-8">
-                          <h4 className="font-serif font-bold text-darkGreen group-hover:text-gold transition-colors mb-1">{item.name}</h4>
-                          <p className="text-darkGreen/80 italic line-clamp-1 font-serif">{item.description}</p>
+                        <div className="flex flex-col min-w-0 pr-2 md:pr-8">
+                          <h4 className="font-serif font-bold text-darkGreen group-hover:text-gold transition-colors mb-0.5 md:mb-1 text-sm md:text-base truncate">{item.name}</h4>
+                          <p className="text-darkGreen/80 italic line-clamp-1 font-serif text-xs md:text-base">{item.description}</p>
                         </div>
                       </div>
-                      <div className="text-right">
-                        {/* Wine glass/bottle icons for wine items */}
-                        {(item.subCategory === 'Vini Bianchi' || item.subCategory === 'Vini Rossi' || item.subCategory === 'Bollicine') && typeof item.price === 'string' && item.price.includes('/') && (
-                          <div className="flex gap-3 justify-end mb-1">
-                            <GlassWater size={12} className="text-gold" />
-                            <Wine size={12} className="text-gold" />
+                      <div className="text-right flex-shrink-0">
+                        {/* Wine glass/bottle icons above prices for wine items */}
+                        {(item.subCategory === 'Vini Bianchi' || item.subCategory === 'Vini Rossi' || item.subCategory === 'Bollicine') && typeof item.price === 'string' && item.price.includes('/') ? (
+                          <div className="flex items-end gap-2 md:gap-3 font-serif font-bold text-darkGreen text-sm md:text-lg whitespace-nowrap">
+                            <div className="flex flex-col items-center">
+                              <Wine size={12} className="md:w-4 md:h-4 text-gold mb-0.5" />
+                              <span>{item.price.split('/')[0].trim()}</span>
+                            </div>
+                            <span className="text-darkGreen/40 pb-0.5">/</span>
+                            <div className="flex flex-col items-center">
+                              <Bottle size={14} className="md:w-4 md:h-4 text-gold mb-0.5" />
+                              <span>{item.price.split('/')[1].trim()}</span>
+                            </div>
+                          </div>
+                        ) : item.category === Category.Birre && typeof item.price === 'string' && item.price.includes('/') ? (
+                          /* Beer mug icons above prices for beer items */
+                          <div className="flex items-end gap-2 md:gap-3 font-serif font-bold text-darkGreen text-sm md:text-lg whitespace-nowrap">
+                            <div className="flex flex-col items-center">
+                              <Beer size={12} className="md:w-4 md:h-4 text-gold mb-0.5" />
+                              <span>{item.price.split('/')[0].trim()}</span>
+                            </div>
+                            <span className="text-darkGreen/40 pb-0.5">/</span>
+                            <div className="flex flex-col items-center">
+                              <Beer size={16} className="md:w-5 md:h-5 text-gold mb-0.5" />
+                              <span>{item.price.split('/')[1].trim()}</span>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="font-serif font-bold text-darkGreen text-sm md:text-lg whitespace-nowrap">
+                            {typeof item.price === 'number' ? item.price.toFixed(2).replace('.', ',') : item.price}
                           </div>
                         )}
-                        <div className="font-serif font-bold text-darkGreen text-lg">
-                          {typeof item.price === 'number' ? item.price.toFixed(2).replace('.', ',') : item.price}
-                        </div>
-                        <div className="flex gap-1 justify-end mt-1">
-                          {item.isVegan && <Leaf size={10} className="text-sage" />}
-                          {item.isVegetarian && !item.isVegan && <Leaf size={10} className="text-sage/80" />}
+                        <div className="flex gap-1 justify-end mt-0.5 md:mt-1">
+                          {item.isVegan && <Leaf size={8} className="md:w-2.5 md:h-2.5 text-sage" />}
+                          {item.isVegetarian && !item.isVegan && <Leaf size={8} className="md:w-2.5 md:h-2.5 text-sage/80" />}
                         </div>
                       </div>
                     </div>
@@ -267,7 +293,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
 
         {/* Footer Info */}
         <div className="mt-20 p-8 border-t border-gold/10 text-center flex flex-col gap-2">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">Coperto € 2,00</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">Coperto 2,00</p>
           <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">
             {lang === 'it' ? 'Allergie o intolleranze alimentari? Chiedi allo staff.' : 'Allergies or food intolerances? Ask the staff.'}
           </p>
@@ -277,7 +303,7 @@ const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
       {/* Item Detail Modal */}
       {selectedItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-darkGreen/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-cream w-full max-w-sm border-2 border-gold p-6 md:p-10 shadow-2xl rounded-[2.5rem] relative animate-[fadeInUp_0.4s_ease-out] max-h-[90vh] overflow-y-auto">
+          <div className="bg-cream w-full max-w-sm border-2 border-gold p-6 md:p-10 shadow-2xl rounded-[2.5rem] relative animate-[fadeInUp_0.4s_ease-out] max-h-[90vh] overflow-y-auto scrollbar-hide">
             <button onClick={() => setSelectedItem(null)} className="absolute top-4 right-4 md:top-6 md:right-6 text-darkGreen/80 hover:text-darkGreen transition-colors p-3 bg-white/50 rounded-full"><X size={24} /></button>
             <div className="flex flex-col items-center text-center pt-4">
               <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-xl mb-6 flex-shrink-0">

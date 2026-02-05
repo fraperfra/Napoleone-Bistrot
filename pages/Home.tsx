@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Star, Clock, Users, Wine, Instagram, Calendar, Music, Mic, GlassWater, Zap, FlaskConical, UtensilsCrossed, Leaf, Heart, Briefcase, PartyPopper } from 'lucide-react';
 import { translations } from '../translations';
 import { EVENTS, MENU_ITEMS } from '../data';
@@ -32,11 +32,13 @@ const instagramPosts = [
 interface HomeProps {
   lang: 'it' | 'en';
   setActivePage: (p: string) => void;
+  navigateToMenu: (category?: string) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
+const Home: React.FC<HomeProps> = ({ lang, setActivePage, navigateToMenu }) => {
   const t = translations[lang];
-  
+  const [risottoExpanded, setRisottoExpanded] = useState(false);
+
   // Get the primary signature drink for the showcase (just one as requested)
   const signatureDrink = MENU_ITEMS.find(item => item.category === Category.Drink);
   const signatureDish = MENU_ITEMS.find(item => item.id === '1'); // Risotto all'Amarone
@@ -149,20 +151,20 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
             <p className="text-darkGreen/70 leading-relaxed text-sm sm:text-base md:text-lg font-medium">
               Dalla colazione gourmet all'aperitivo chic, fino alle cene animate dal nostro celebre karaoke, ogni momento è pensato per farvi sentire speciali. La nostra cucina celebra i prodotti del territorio veneto con un tocco contemporaneo.
             </p>
-            <div className="flex flex-wrap gap-8">
+            <div className="flex flex-wrap gap-3 md:gap-8 justify-center md:justify-start">
               <button
                 onClick={() => setActivePage('about')}
-                className="group flex items-center gap-4 text-sage font-bold uppercase tracking-widest hover:text-darkGreen transition-colors px-6 py-2 rounded-full border border-sage/20 hover:border-darkGreen"
+                className="group flex items-center gap-2 md:gap-4 text-sage font-bold uppercase tracking-widest hover:text-darkGreen transition-colors px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-sage/20 hover:border-darkGreen text-xs md:text-sm"
               >
                 {lang === 'it' ? 'La nostra storia' : 'Our Story'}
-                <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
               </button>
               <button
                 onClick={() => setActivePage('events')}
-                className="group flex items-center gap-4 text-gold font-bold uppercase tracking-widest hover:text-darkGreen transition-colors px-6 py-2 rounded-full border border-gold/20 hover:border-darkGreen"
+                className="group flex items-center gap-2 md:gap-4 text-gold font-bold uppercase tracking-widest hover:text-darkGreen transition-colors px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-gold/20 hover:border-darkGreen text-xs md:text-sm"
               >
                 {t.organizeEvent}
-                <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
               </button>
             </div>
           </div>
@@ -197,50 +199,62 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Feature Dish: Risotto (Large Card) */}
             <div className="lg:col-span-2 group relative h-auto min-h-[300px] overflow-hidden rounded-[3rem] shadow-xl border border-darkGreen/5 cursor-pointer" onClick={() => setActivePage('menu')}>
-              <img 
-                src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=1200" 
-                alt="Risotto all'Amarone" 
+              <img
+                src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=1200"
+                alt="Risotto all'Amarone"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-darkGreen via-darkGreen/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-6 md:p-10 w-full">
-                <div className="flex items-center gap-3 text-gold mb-2">
-                  <UtensilsCrossed size={20} />
-                  <span className="uppercase tracking-widest text-xs font-bold">{lang === 'it' ? 'Piatto Iconico' : 'Iconic Dish'}</span>
-                </div>
-                <h3 className="text-white mb-2 font-bold font-serif">Risotto all'Amarone</h3>
-                <p className="text-white/90 italic mb-4 max-w-xl">
-                  {lang === 'it' 
+              {/* Badge in alto a sinistra */}
+              <div className="absolute top-4 left-4 md:top-6 md:left-6 flex items-center gap-2 md:gap-3 text-gold bg-darkGreen/70 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-full">
+                <UtensilsCrossed size={14} className="md:w-5 md:h-5" />
+                <span className="uppercase tracking-widest text-[9px] md:text-xs font-bold">{lang === 'it' ? 'Piatto Iconico' : 'Iconic Dish'}</span>
+              </div>
+              <div className="absolute bottom-0 left-0 px-6 md:px-10 pb-4 md:pb-10 pt-6 w-full">
+                <h3 className="text-white mb-2 font-bold font-serif text-xl md:text-2xl">Risotto all'Amarone</h3>
+                <p
+                  className={`text-white/90 italic mb-2 md:mb-4 max-w-xl text-sm md:text-base transition-all cursor-pointer ${risottoExpanded ? '' : 'line-clamp-2 md:line-clamp-none'}`}
+                  onClick={(e) => { e.stopPropagation(); setRisottoExpanded(!risottoExpanded); }}
+                >
+                  {lang === 'it'
                     ? "Il cuore della Valpolicella mantecato lentamente con il miglior riso Vialone Nano. Un'esplosione di sapore veneto."
                     : "The heart of Valpolicella slowly creamed with the best Vialone Nano rice. An explosion of Venetian flavor."}
                 </p>
+                <span
+                  className="text-gold text-xs uppercase tracking-wider md:hidden cursor-pointer"
+                  onClick={(e) => { e.stopPropagation(); setRisottoExpanded(!risottoExpanded); }}
+                >
+                  {risottoExpanded ? (lang === 'it' ? '▲ Meno' : '▲ Less') : (lang === 'it' ? '▼ Leggi tutto' : '▼ Read more')}
+                </span>
               </div>
             </div>
 
             {/* Side Kitchen Info Column */}
             <div className="flex flex-col gap-8">
-              <div className="bg-cream p-8 rounded-[2.5rem] border border-darkGreen/5 hover:border-gold/30 hover:shadow-2xl transition-all duration-500 group flex flex-col justify-between">
+              <div className="bg-cream p-6 md:p-8 rounded-[2.5rem] border border-darkGreen/5 hover:border-gold/30 hover:shadow-2xl transition-all duration-500 group flex flex-col justify-between">
                 <div>
-                  <div className="flex justify-between items-start mb-6">
+                  <div className="flex items-center gap-4 mb-4 md:mb-6">
                     <div className="bg-white p-3 rounded-2xl shadow-sm text-gold group-hover:bg-gold group-hover:text-darkGreen transition-colors">
                       <Leaf size={20} />
                     </div>
+                    <h4 className="text-xl md:text-2xl text-darkGreen group-hover:text-gold transition-colors font-bold">Km Zero</h4>
                   </div>
-                  <h4 className="text-2xl text-darkGreen mb-3 group-hover:text-gold transition-colors font-bold">Km Zero</h4>
-                  <p className="text-darkGreen/80 text-base leading-relaxed font-medium">
+                  <p className="text-darkGreen/80 text-sm md:text-base leading-relaxed font-medium">
                     {lang === 'it' ? 'Materie prime selezionate da piccoli produttori della Lessinia e della Valpolicella.' : 'Raw materials selected from small producers in Lessinia and Valpolicella.'}
                   </p>
                 </div>
               </div>
 
-              <div className="bg-darkGreen p-8 rounded-[2.5rem] text-center flex flex-col items-center justify-center gap-4 group cursor-pointer" onClick={() => setActivePage('menu')}>
-                <div className="text-gold mb-2"><Heart size={32} /></div>
-                <h4 className="text-2xl text-white mb-2 font-bold">{lang === 'it' ? 'Fatto a Mano' : 'Handmade'}</h4>
-                <p className="text-white/80 text-base italic leading-relaxed mb-4">
+              <div className="bg-darkGreen p-6 md:p-8 rounded-[2.5rem] flex flex-col items-center justify-center gap-3 md:gap-4 group cursor-pointer" onClick={() => setActivePage('menu')}>
+                <div className="flex items-center gap-4">
+                  <div className="text-gold"><Heart size={28} /></div>
+                  <h4 className="text-xl md:text-2xl text-white font-bold">{lang === 'it' ? 'Fatto a Mano' : 'Handmade'}</h4>
+                </div>
+                <p className="text-white/80 text-sm md:text-base italic leading-relaxed mb-2 md:mb-4 text-center">
                   {lang === 'it' ? 'Ogni giorno pasta fresca e dolci artigianali.' : 'Fresh pasta and artisanal desserts every day.'}
                 </p>
-                <div className="w-12 h-12 bg-gold text-darkGreen rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <ArrowRight />
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gold text-darkGreen rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <ArrowRight size={18} />
                 </div>
               </div>
             </div>
@@ -265,8 +279,8 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
                   ? "Un'esperienza sensoriale racchiusa in un calice. Ingredienti rari e spirits premium si fondono nel cuore del centro storico di Verona per l'aperitivo perfetto."
                   : "A sensory experience in a glass. Rare ingredients and premium spirits merge in the heart of Verona's historic center for the perfect aperitif."}
               </p>
-              <button 
-                onClick={() => setActivePage('menu')}
+              <button
+                onClick={() => navigateToMenu('Mixology')}
                 className="bg-gold text-darkGreen px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white transition-all transform hover:-translate-y-1 shadow-xl flex items-center gap-3 w-fit"
               >
                 {lang === 'it' ? 'Sfoglia la Drink List' : 'Browse Drink List'} <ArrowRight size={16} />
@@ -285,7 +299,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage }) => {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a251b] via-transparent to-transparent opacity-60"></div>
                     <div className="absolute top-3 right-3 bg-darkGreen/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-gold/30 text-gold font-bold text-xs">
                       {/* Fix: Handle cases where price might be a string (e.g., price ranges) before calling toFixed */}
-                      €{typeof signatureDrink.price === 'number' ? signatureDrink.price.toFixed(2) : signatureDrink.price}
+                      {typeof signatureDrink.price === 'number' ? signatureDrink.price.toFixed(2) : signatureDrink.price}
                     </div>
                   </div>
                   <div className="px-3 pb-3 text-center">

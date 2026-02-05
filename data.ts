@@ -246,6 +246,34 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Liquori',
     alcoholLevel: 4
   },
+  {
+    id: 'liq-2',
+    name: 'Grappa',
+    description: '',
+    price: 3.5,
+    category: Category.Drink,
+    subCategory: 'Liquori',
+    alcoholLevel: 4
+  },
+  {
+    id: 'liq-3',
+    name: 'Passito',
+    description: '',
+    price: 4,
+    category: Category.Drink,
+    subCategory: 'Liquori',
+    alcoholLevel: 4,
+    allergens: ['Solfiti']
+  },
+  {
+    id: 'liq-4',
+    name: 'Spritz Aperol/Campari',
+    description: '',
+    price: 5,
+    category: Category.Drink,
+    subCategory: 'Liquori',
+    alcoholLevel: 2
+  },
 
   // --- BIRRE ALLA SPINA ---
   {
@@ -282,6 +310,14 @@ export const MENU_ITEMS: MenuItem[] = [
   // --- CAFFETTERIA ---
   {
     id: 'caf-1',
+    name: 'Caffè Espresso',
+    description: '',
+    price: 1,
+    category: Category.Bar,
+    subCategory: 'Caffetteria'
+  },
+  {
+    id: 'caf-2',
     name: 'Caffè Liscio',
     description: '',
     price: 1.3,
@@ -289,7 +325,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Caffetteria'
   },
   {
-    id: 'caf-2',
+    id: 'caf-3',
     name: 'Caffè Macchiato Freddo',
     description: '',
     price: 1.3,
@@ -297,7 +333,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Caffetteria'
   },
   {
-    id: 'caf-3',
+    id: 'caf-4',
     name: 'Caffè Macchiato',
     description: '',
     price: 1.4,
@@ -306,7 +342,7 @@ export const MENU_ITEMS: MenuItem[] = [
     allergens: ['Latte']
   },
   {
-    id: 'caf-4',
+    id: 'caf-5',
     name: 'Caffè Deca',
     description: '',
     price: 1.4,
@@ -314,7 +350,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Caffetteria'
   },
   {
-    id: 'caf-5',
+    id: 'caf-6',
     name: 'Caffè Corretto',
     description: '',
     price: 1.8,
@@ -322,7 +358,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Caffetteria'
   },
   {
-    id: 'caf-6',
+    id: 'caf-7',
     name: 'Caffè Shakerato',
     description: '',
     price: 3,
@@ -330,7 +366,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Caffetteria'
   },
   {
-    id: 'caf-7',
+    id: 'caf-8',
     name: 'Cappuccino',
     description: '',
     price: 1.6,
@@ -339,7 +375,7 @@ export const MENU_ITEMS: MenuItem[] = [
     allergens: ['Latte']
   },
   {
-    id: 'caf-8',
+    id: 'caf-9',
     name: 'Cappuccino Orzo',
     description: '',
     price: 2,
@@ -348,7 +384,7 @@ export const MENU_ITEMS: MenuItem[] = [
     allergens: ['Latte', 'Glutine (cereali)']
   },
   {
-    id: 'caf-9',
+    id: 'caf-10',
     name: 'Macchiatone',
     description: '',
     price: 1.5,
@@ -357,7 +393,7 @@ export const MENU_ITEMS: MenuItem[] = [
     allergens: ['Latte']
   },
   {
-    id: 'caf-10',
+    id: 'caf-11',
     name: 'Ginseng / Orzo',
     description: '',
     price: 1.6,
@@ -366,7 +402,7 @@ export const MENU_ITEMS: MenuItem[] = [
     allergens: ['Latte', 'Glutine (cereali)']
   },
   {
-    id: 'caf-11',
+    id: 'caf-12',
     name: 'Latte Macchiato',
     description: '',
     price: 1.9,
@@ -375,7 +411,7 @@ export const MENU_ITEMS: MenuItem[] = [
     allergens: ['Latte']
   },
   {
-    id: 'caf-12',
+    id: 'caf-13',
     name: 'Crema di Latte',
     description: '',
     price: 0.5,
@@ -384,7 +420,7 @@ export const MENU_ITEMS: MenuItem[] = [
     allergens: ['Latte']
   },
   {
-    id: 'caf-13',
+    id: 'caf-14',
     name: 'Tè Caldo',
     description: '',
     price: 3.5,
@@ -392,7 +428,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Caffetteria'
   },
   {
-    id: 'caf-14',
+    id: 'caf-15',
     name: 'Cioccolata Calda',
     description: '',
     price: 3,
@@ -632,7 +668,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Salato',
     allergens: ['Glutine (cereali)', 'Latte'],
-    recommendedPairings: ['Birra Kuhbacher', 'Coca Cola/Zero Vetro']
+    recommendedPairings: ['Kuhbacher (non filtrata)', 'Coca Cola/Zero Vetro']
   },
   {
     id: 'bar-sal-3',
@@ -642,7 +678,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Salato',
     allergens: ['Glutine (cereali)', 'Latte'],
-    recommendedPairings: ['Birra IPA Special', 'FuzeTea Pesca/Limone']
+    recommendedPairings: ['IPA Special', 'FuzeTea Pesca/Limone']
   },
   {
     id: 'bar-sal-4',
@@ -652,7 +688,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Salato',
     allergens: ['Glutine (cereali)', 'Latte', 'Pesce'],
-    recommendedPairings: ['Birra Kloster Hell', 'Spritz Aperol/Campari']
+    recommendedPairings: ['Kloster Hell', 'Spritz Aperol/Campari']
   },
   {
     id: 'bar-sal-5',
@@ -662,7 +698,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Salato',
     allergens: ['Glutine (cereali)', 'Latte'],
-    recommendedPairings: ['Birra Kloster Hell', 'Coca Cola/Zero Vetro']
+    recommendedPairings: ['Kloster Hell', 'Coca Cola/Zero Vetro']
   },
   {
     id: 'bar-sal-6',
@@ -672,7 +708,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Salato',
     allergens: ['Glutine (cereali)', 'Latte'],
-    recommendedPairings: ['Birra IPA Special', 'Valpolicella Classico']
+    recommendedPairings: ['IPA Special', 'Valpolicella Classico 2021 DOC']
   },
   {
     id: 'bar-sal-7',
@@ -682,7 +718,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Salato',
     allergens: ['Glutine (cereali)', 'Latte'],
-    recommendedPairings: ['Birra Kuhbacher', 'Valpolicella Classico']
+    recommendedPairings: ['Kuhbacher (non filtrata)', 'Valpolicella Classico 2021 DOC']
   },
   {
     id: 'bar-sal-8',
@@ -692,7 +728,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bar,
     subCategory: 'Salato',
     allergens: ['Glutine (cereali)', 'Latte'],
-    recommendedPairings: ['Prosecco DOC', 'Spritz Aperol/Campari']
+    recommendedPairings: ['Prosecco DOC Brut/Extra Dry', 'Spritz Aperol/Campari']
   },
 
 
@@ -706,7 +742,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Insalatone',
     image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&q=80&w=400',
     allergens: ['Glutine (cereali)', 'Uova', 'Latte', 'Pesce', 'Senape'],
-    recommendedPairings: ['Acqua Mood', 'Custoza DOC']
+    recommendedPairings: ['Acqua Mood 0,5l', 'Custoza DOC']
   },
   {
     id: 'ins-2',
@@ -717,7 +753,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Insalatone',
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=400',
     allergens: ['Pesce'],
-    recommendedPairings: ['Lugana DOC', 'Acqua Mood']
+    recommendedPairings: ['Lugana DOC', 'Acqua Mood 0,5l']
   },
 
   // --- BISTROT - ANTIPASTI ---
@@ -730,7 +766,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Antipasti',
     image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&q=80&w=400',
     allergens: ['Molluschi'],
-    recommendedPairings: ['Lugana DOC', 'Prosecco DOC']
+    recommendedPairings: ['Lugana DOC', 'Prosecco DOC Brut/Extra Dry']
   },
   {
     id: 'ant-2',
@@ -741,7 +777,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Antipasti',
     image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=400',
     allergens: ['Latte', 'Glutine (cereali)'],
-    recommendedPairings: ['Valpolicella Ripasso', 'Birra IPA Special', 'Prosecco DOC']
+    recommendedPairings: ['Valpolicella Ripasso 2017 DOC', 'IPA Special', 'Prosecco DOC Brut/Extra Dry']
   },
 
   // --- BISTROT - PRIMI ---
@@ -755,7 +791,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVegetarian: true,
     image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=400',
     allergens: ['Glutine (cereali)', 'Uova', 'Latte'],
-    recommendedPairings: ['Soave Classico', 'Lugana Riserva']
+    recommendedPairings: ['Soave Classico DOC', 'Lugana Riserva DOC']
   },
   {
     id: 'pri-2',
@@ -766,7 +802,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Primi Piatti',
     image: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&q=80&w=400',
     allergens: ['Glutine (cereali)', 'Uova'],
-    recommendedPairings: ['Valpolicella Classico', 'Chianti Classico']
+    recommendedPairings: ['Valpolicella Classico 2021 DOC', 'Chianti Classico Bucianera DOCG']
   },
   {
     id: 'pri-3',
@@ -778,7 +814,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVegetarian: true,
     image: 'https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&q=80&w=400',
     allergens: ['Glutine (cereali)', 'Latte'],
-    recommendedPairings: ['Valpolicella Superiore', 'Lugana Riserva']
+    recommendedPairings: ['Valpolicella Superiore 2021 DOC', 'Lugana Riserva DOC']
   },
   {
     id: 'pri-4',
@@ -790,7 +826,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVegetarian: true,
     image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=400',
     allergens: ['Latte'],
-    recommendedPairings: ['Valpolicella Ripasso', 'Amarone della Valpolicella']
+    recommendedPairings: ['Valpolicella Ripasso 2017 DOC', 'Valpolicella Amarone DOC']
   },
 
   // --- BISTROT - SECONDI ---
@@ -802,7 +838,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bistrot,
     subCategory: 'Secondi Piatti',
     image: 'https://images.unsplash.com/photo-1546241072-48010ad28c2c?auto=format&fit=crop&q=80&w=400',
-    recommendedPairings: ['Valpolicella Ripasso', 'Amarone della Valpolicella', 'Napoleone Rosso Veronese']
+    recommendedPairings: ['Valpolicella Ripasso 2017 DOC', 'Valpolicella Amarone DOC', 'Napoleone Rosso Veronese']
   },
   {
     id: 'sec-2',
@@ -812,7 +848,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: Category.Bistrot,
     subCategory: 'Secondi Piatti',
     image: 'https://images.unsplash.com/photo-1610057099443-fde8c4d29f29?auto=format&fit=crop&q=80&w=400',
-    recommendedPairings: ['Valpolicella Superiore', 'Birra Kloster Hell']
+    recommendedPairings: ['Valpolicella Superiore 2021 DOC', 'Kloster Hell']
   },
   {
     id: 'sec-3',
@@ -823,7 +859,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Secondi Piatti',
     image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400',
     allergens: ['Pesce'],
-    recommendedPairings: ['Lugana DOC', 'Prosecco DOC']
+    recommendedPairings: ['Lugana DOC', 'Prosecco DOC Brut/Extra Dry']
   },
   {
     id: 'sec-4',
@@ -834,7 +870,7 @@ export const MENU_ITEMS: MenuItem[] = [
     subCategory: 'Secondi Piatti',
     image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400',
     allergens: ['Molluschi', 'Latte'],
-    recommendedPairings: ['Lugana Riserva', 'Durello Lessini']
+    recommendedPairings: ['Lugana Riserva DOC', 'Durello Lessini DOC']
   },
 
   // --- BISTROT - CONTORNI ---

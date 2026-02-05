@@ -10,18 +10,24 @@ import Contact from './pages/Contact';
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<string>('home');
   const [lang, setLang] = useState<'it' | 'en'>('it');
+  const [menuCategory, setMenuCategory] = useState<string | null>(null);
 
   // Smooth scroll to top when page changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activePage]);
 
+  const navigateToMenu = (category?: string) => {
+    setMenuCategory(category || null);
+    setActivePage('menu');
+  };
+
   const renderPage = () => {
     switch (activePage) {
       case 'home':
-        return <Home lang={lang} setActivePage={setActivePage} />;
+        return <Home lang={lang} setActivePage={setActivePage} navigateToMenu={navigateToMenu} />;
       case 'menu':
-        return <Menu lang={lang} />;
+        return <Menu lang={lang} initialCategory={menuCategory} />;
       case 'events':
         return <Events lang={lang} />;
       case 'about':
@@ -29,7 +35,7 @@ const App: React.FC = () => {
       case 'contact':
         return <Contact />;
       default:
-        return <Home lang={lang} setActivePage={setActivePage} />;
+        return <Home lang={lang} setActivePage={setActivePage} navigateToMenu={navigateToMenu} />;
     }
   };
 
