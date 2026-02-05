@@ -2,7 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { Category, MenuItem as MenuItemType } from '../types';
 import { MENU_ITEMS } from '../data';
-import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet, GlassWater, Beer, Bottle } from 'lucide-react';
+import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet, GlassWater, Beer } from 'lucide-react';
+
+// Custom Bottle icon component
+const BottleIcon = ({ size = 14, className = "" }: { size?: number; className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M10 2h4v4l2 2v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8l2-2V2z"/>
+    <path d="M10 12h4"/>
+  </svg>
+);
 import { translations } from '../translations';
 import SEO from '../components/SEO';
 
@@ -251,7 +259,7 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
                             </div>
                             <span className="text-darkGreen/40 pb-0.5">/</span>
                             <div className="flex flex-col items-center">
-                              <Bottle size={14} className="md:w-4 md:h-4 text-gold mb-0.5" />
+                              <BottleIcon size={14} className="md:w-4 md:h-4 text-gold mb-0.5" />
                               <span>{item.price.split('/')[1].trim()}</span>
                             </div>
                           </div>
