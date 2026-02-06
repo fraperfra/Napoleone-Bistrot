@@ -49,7 +49,9 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
       <img
         src={light ? "/logo-n-white.png" : "/logo-n-dark.png"}
         alt="Napoleone Bistrot"
-        className="h-14 w-auto object-contain transition-all duration-300"
+        className="h-12 sm:h-12 md:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
+        loading="eager"
+        decoding="async"
       />
     </div>
   );
@@ -60,18 +62,31 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
       <img
         src={light ? "/logo-long-white.png" : "/logo-long-dark.png"}
         alt="Napoleone Bistrot"
-        className={`${light ? 'h-16' : 'h-12'} w-auto object-contain transition-all duration-300`}
+        className={`${light ? 'h-16 md:h-16 lg:h-20' : 'h-12 md:h-14 lg:h-16'} w-auto object-contain transition-all duration-300`}
+        loading="eager"
+        decoding="async"
       />
     </div>
   );
 
   return (
     <div className="min-h-screen flex flex-col">
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${!isHeroHeader ? 'bg-white/95 backdrop-blur-md shadow-md py-8' : 'bg-transparent py-6'}`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-center md:justify-between items-center relative">
-          {/* Mobile: Logo N centered */}
-          <div className="md:hidden absolute left-1/2 -translate-x-1/2">
-            <LogoN light={isHeroHeader} />
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${!isHeroHeader ? 'bg-white/95 backdrop-blur-md shadow-md py-7' : 'bg-transparent py-5'}`}>
+        <div className="max-w-7xl mx-auto px-3 md:px-7 flex items-center justify-between relative">
+          <div className="md:hidden w-full grid grid-cols-3 items-center">
+            <div></div>
+            <div className="flex justify-center">
+              <LogoN light={isHeroHeader} />
+            </div>
+            <div className="flex justify-end">
+              <button
+                className={`p-3 transition-colors duration-300 ${isHeroHeader ? 'text-white' : 'text-gold'}`}
+                onClick={() => setIsMenuOpen(true)}
+                aria-label="Menu"
+              >
+                <MenuIcon size={24} />
+              </button>
+            </div>
           </div>
           {/* Desktop: Logo lungo */}
           <div className="hidden md:block">
@@ -79,12 +94,12 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map(item => (
               <button
                 key={item.id}
                 onClick={() => setActivePage(item.id)}
-                className={`text-base font-medium tracking-wider uppercase transition-all hover:text-gold hover:underline ${activePage === item.id ? 'text-gold border-b border-gold' : isHeroHeader ? 'text-white' : 'text-darkGreen'}`}
+                className={`text-sm font-medium tracking-wider uppercase transition-all hover:text-gold hover:underline ${activePage === item.id ? (isHeroHeader ? 'text-gold border-b border-gold' : 'text-darkGreen border-b border-gold') : (isHeroHeader ? 'text-white' : 'text-darkGreen')}`}
               >
                 {item.label}
               </button>
@@ -93,24 +108,17 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
               onClick={() => setLang(lang === 'it' ? 'en' : 'it')}
               className={`flex items-center gap-1 text-xs font-bold uppercase transition-colors duration-500 ${isHeroHeader ? 'text-white' : 'text-darkGreen'} hover:text-gold`}
             >
-              <Globe size={14} /> {lang.toUpperCase()}
+              <Globe size={12} /> {lang.toUpperCase()}
             </button>
             <button
               onClick={() => setActivePage('contact')}
-              className="bg-sage text-white px-6 py-2 rounded-full text-base font-bold uppercase tracking-widest hover:bg-darkGreen transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-sage/20"
+              className="bg-sage text-white px-5 py-1.5 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-darkGreen transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-sage/20"
             >
               {t.bookNow}
             </button>
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className={`md:hidden p-4 -mr-4 transition-colors duration-300 absolute right-4 ${isHeroHeader ? 'text-white' : 'text-gold'}`}
-            onClick={() => setIsMenuOpen(true)}
-            aria-label="Menu"
-          >
-            <MenuIcon size={28} />
-          </button>
+          
         </div>
       </nav>
 

@@ -370,30 +370,33 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage, navigateToMenu }) => {
               {EVENTS.slice(0, 2).map((event, idx) => (
                 <div 
                   key={event.id}
-                  className="bg-cream p-8 rounded-[2.5rem] border border-darkGreen/5 hover:border-gold/30 hover:shadow-2xl transition-all duration-500 group flex flex-col justify-between"
+                  className="bg-cream p-6 md:p-8 rounded-[2.5rem] border border-darkGreen/5 hover:border-gold/30 hover:shadow-2xl transition-all duration-500 group flex flex-row items-center gap-6 cursor-pointer"
                   onClick={() => setActivePage('events')}
                 >
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="bg-white p-3 rounded-2xl shadow-sm text-gold group-hover:bg-gold group-hover:text-darkGreen transition-colors">
-                        {event.type === 'karaoke' ? <Music size={20} /> : <Calendar size={20} />}
-                      </div>
+                  <div className="shrink-0 bg-white p-3 rounded-2xl shadow-sm text-gold group-hover:bg-gold group-hover:text-darkGreen transition-colors">
+                    {event.type === 'karaoke' ? <Music size={20} /> : <Calendar size={20} />}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-xl md:text-2xl text-darkGreen mb-2 group-hover:text-gold transition-colors font-bold">{event.title}</h4>
+                    <p className="text-darkGreen/80 text-sm md:text-base leading-relaxed line-clamp-2 font-medium">{event.description}</p>
+                    <div className="flex items-center gap-3 justify-end mt-2">
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-gold">{lang === 'it' ? 'Dettagli' : 'Details'} +</span>
                       <span className="text-[9px] font-black uppercase tracking-[0.2em] text-darkGreen/80">{event.date}</span>
                     </div>
-                    <h4 className="text-2xl text-darkGreen mb-3 group-hover:text-gold transition-colors font-bold">{event.title}</h4>
-                    <p className="text-darkGreen/80 text-base leading-relaxed line-clamp-2 font-medium">{event.description}</p>
-                  </div>
-                  <div className="mt-8 pt-4 border-t border-darkGreen/5 text-[9px] font-bold uppercase tracking-widest text-gold">
-                    {lang === 'it' ? 'Dettagli Evento' : 'Event Details'} +
                   </div>
                 </div>
               ))}
               
-              {/* Call to Action Card */}
-              <div className="bg-darkGreen p-8 rounded-[2.5rem] text-center flex flex-col items-center justify-center gap-4 group cursor-pointer" onClick={() => setActivePage('events')}>
-                <p className="text-white/80 text-[10px] uppercase tracking-widest">{lang === 'it' ? 'Vuoi vedere tutto?' : 'Want to see all?'}</p>
-                <h4 className="text-3xl text-white mb-2 font-bold">{lang === 'it' ? 'Calendario Completo' : 'Full Calendar'}</h4>
-                <div className="w-12 h-12 bg-gold text-darkGreen rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              {/* Call to Action Card - horizontal layout */}
+              <div 
+                className="bg-darkGreen p-6 md:p-8 rounded-[2.5rem] flex flex-row items-center justify-between gap-6 group cursor-pointer"
+                onClick={() => setActivePage('events')}
+              >
+                <div className="text-left">
+                  <p className="text-white/80 text-[10px] uppercase tracking-widest">{lang === 'it' ? 'Vuoi vedere tutto?' : 'Want to see all?'}</p>
+                  <h4 className="text-2xl md:text-3xl text-white font-bold">{lang === 'it' ? 'Calendario Completo' : 'Full Calendar'}</h4>
+                </div>
+                <div className="shrink-0 w-12 h-12 bg-gold text-darkGreen rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                   <ArrowRight />
                 </div>
               </div>
