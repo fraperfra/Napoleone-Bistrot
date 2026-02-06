@@ -8,13 +8,6 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
-        proxy: {
-          '/openai-api': {
-            target: 'https://api.openai.com/v1',
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/openai-api/, ''),
-          },
-        },
       },
       plugins: [react()],
       define: {

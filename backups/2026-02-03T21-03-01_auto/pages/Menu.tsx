@@ -1,31 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { useCMS } from '../context/CMSContext';
 import { Category, MenuItem as MenuItemType } from '../types';
-import { MENU_ITEMS as STATIC_MENU_ITEMS } from '../data';
-import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet, GlassWater, Beer } from 'lucide-react';
-
-// Custom Bottle icon component
-const BottleIcon = ({ size = 14, className = "" }: { size?: number; className?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M10 2h4v4l2 2v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8l2-2V2z"/>
-    <path d="M10 12h4"/>
-  </svg>
-);
+import { MENU_ITEMS } from '../data';
+import { Leaf, Download, Filter, X, Plus, Wheat, Milk, Egg, Shell, Info, Martini, UtensilsCrossed, Wine, ChevronLeft, Fish, CircleDot, Bean, Carrot, Droplet, GlassWater } from 'lucide-react';
 import { translations } from '../translations';
 import SEO from '../components/SEO';
 
-const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = ({ lang, initialCategory }) => {
-  const { menuItems: cmsMenuItems } = useCMS();
-  // Merge static and CMS items, or prefer CMS if available
-  const MENU_ITEMS = cmsMenuItems.length > 0 ? cmsMenuItems : STATIC_MENU_ITEMS;
-
-  const [activeCategory, setActiveCategory] = useState<Category>(() => {
-    if (initialCategory && Object.values(Category).includes(initialCategory as Category)) {
-      return initialCategory as Category;
-    }
-    return Category.Bistrot;
-  });
+const Menu: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
+  const [activeCategory, setActiveCategory] = useState<Category>(Category.Bistrot);
   const [dietaryFilters, setDietaryFilters] = useState({
     vegetarian: false,
     vegan: false,
@@ -169,7 +151,7 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <header className="text-center mb-10 animate-fade-in">
           <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl mb-4 text-darkGreen tracking-tight font-bold">La Nostra Carta</h1>
-          <p className="italic text-darkGreen/90 max-w-3xl mx-auto text-base sm:text-lg md:text-xl font-serif leading-relaxed tracking-wide">
+          <p className="italic text-darkGreen/70 max-w-2xl mx-auto text-sm sm:text-base md:text-xl font-serif">
             "Dalle ricette della tradizione veronese alle eccellenze italiane, ogni ingrediente è selezionato con cura."
           </p>
           <div className="mt-8 flex justify-center gap-4">
@@ -183,12 +165,12 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
         </header>
 
         {/* Categories Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12 px-2">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 md:px-8 py-2.5 md:py-3 font-serif font-semibold text-sm md:text-lg tracking-wider md:tracking-widest transition-all duration-300 rounded-full border ${activeCategory === cat ? 'bg-gold text-white border-gold shadow-xl -translate-y-1' : 'bg-white/80 border-gold/20 text-darkGreen hover:text-darkGreen hover:bg-white hover:border-gold/40'}`}
+              className={`px-8 py-3 font-serif text-lg tracking-widest transition-all duration-300 rounded-full border ${activeCategory === cat ? 'bg-gold text-white border-gold shadow-xl -translate-y-1' : 'bg-white/50 border-transparent text-darkGreen/80 hover:text-darkGreen hover:bg-white'}`}
             >
               {cat}
             </button>
@@ -232,63 +214,42 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
                   <h3 className="text-darkGreen font-bold tracking-tight font-serif">{sub}</h3>
                   <div className="h-[1px] flex-grow bg-gold/20"></div>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 md:gap-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
                   {items.map((item, idx) => (
                     <div
                       key={item.id}
                       onClick={() => handleItemClick(item)}
-                      className="group flex items-center justify-between p-3 md:p-4 rounded-2xl border border-transparent hover:border-gold/20 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer gap-3"
+                      className="group flex items-center justify-between p-4 rounded-2xl border border-transparent hover:border-gold/20 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer"
                     >
-                      <div className="flex items-center gap-3 md:gap-5 flex-grow min-w-0">
+                      <div className="flex items-center gap-5 flex-grow">
                         {item.image ? (
-                          <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl overflow-hidden shadow-sm flex-shrink-0 group-hover:scale-110 transition-transform">
+                          <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm flex-shrink-0 group-hover:scale-110 transition-transform">
                             <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                           </div>
                         ) : (
-                          <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-cream flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-colors flex-shrink-0">
-                            <Info size={20} className="md:w-6 md:h-6" />
+                          <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-colors">
+                            <Info size={24} />
                           </div>
                         )}
-                        <div className="flex flex-col min-w-0 pr-2 md:pr-8">
-                          <h4 className="font-serif font-bold text-darkGreen group-hover:text-gold transition-colors mb-1 md:mb-1.5 text-base md:text-lg leading-snug tracking-wide truncate">{item.name}</h4>
-                          <p className="text-darkGreen/90 italic line-clamp-1 font-serif text-base md:text-lg leading-relaxed tracking-wide">{item.description}</p>
+                        <div className="flex flex-col pr-8">
+                          <h4 className="font-serif font-bold text-darkGreen group-hover:text-gold transition-colors mb-1">{item.name}</h4>
+                          <p className="text-darkGreen/80 italic line-clamp-1 font-serif">{item.description}</p>
                         </div>
                       </div>
-                      <div className="text-right flex-shrink-0">
-                        {/* Wine glass/bottle icons above prices for wine items */}
-                        {(item.subCategory === 'Vini Bianchi' || item.subCategory === 'Vini Rossi' || item.subCategory === 'Bollicine') && typeof item.price === 'string' && item.price.includes('/') ? (
-                          <div className="flex items-end gap-2 md:gap-3 font-serif font-bold text-darkGreen text-sm md:text-lg whitespace-nowrap">
-                            <div className="flex flex-col items-center">
-                              <Wine size={12} className="md:w-4 md:h-4 text-gold mb-0.5" />
-                              <span>{item.price.split('/')[0].trim()}</span>
-                            </div>
-                            <span className="text-darkGreen/40 pb-0.5">/</span>
-                            <div className="flex flex-col items-center">
-                              <BottleIcon size={14} className="md:w-4 md:h-4 text-gold mb-0.5" />
-                              <span>{item.price.split('/')[1].trim()}</span>
-                            </div>
-                          </div>
-                        ) : item.category === Category.Birre && typeof item.price === 'string' && item.price.includes('/') ? (
-                          /* Beer mug icons above prices for beer items */
-                          <div className="flex items-end gap-2 md:gap-3 font-serif font-bold text-darkGreen text-sm md:text-lg whitespace-nowrap">
-                            <div className="flex flex-col items-center">
-                              <Beer size={12} className="md:w-4 md:h-4 text-gold mb-0.5" />
-                              <span>{item.price.split('/')[0].trim()}</span>
-                            </div>
-                            <span className="text-darkGreen/40 pb-0.5">/</span>
-                            <div className="flex flex-col items-center">
-                              <Beer size={16} className="md:w-5 md:h-5 text-gold mb-0.5" />
-                              <span>{item.price.split('/')[1].trim()}</span>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="font-serif font-bold text-darkGreen text-sm md:text-lg whitespace-nowrap">
-                            {typeof item.price === 'number' ? item.price.toFixed(2).replace('.', ',') : item.price}
+                      <div className="text-right">
+                        {/* Wine glass/bottle icons for wine items */}
+                        {(item.subCategory === 'Vini Bianchi' || item.subCategory === 'Vini Rossi' || item.subCategory === 'Bollicine') && typeof item.price === 'string' && item.price.includes('/') && (
+                          <div className="flex gap-3 justify-end mb-1">
+                            <GlassWater size={12} className="text-gold" />
+                            <Wine size={12} className="text-gold" />
                           </div>
                         )}
-                        <div className="flex gap-1 justify-end mt-0.5 md:mt-1">
-                          {item.isVegan && <Leaf size={8} className="md:w-2.5 md:h-2.5 text-sage" />}
-                          {item.isVegetarian && !item.isVegan && <Leaf size={8} className="md:w-2.5 md:h-2.5 text-sage/80" />}
+                        <div className="font-serif font-bold text-darkGreen text-lg">
+                          {typeof item.price === 'number' ? item.price.toFixed(2).replace('.', ',') : item.price}
+                        </div>
+                        <div className="flex gap-1 justify-end mt-1">
+                          {item.isVegan && <Leaf size={10} className="text-sage" />}
+                          {item.isVegetarian && !item.isVegan && <Leaf size={10} className="text-sage/80" />}
                         </div>
                       </div>
                     </div>
@@ -306,7 +267,7 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
 
         {/* Footer Info */}
         <div className="mt-20 p-8 border-t border-gold/10 text-center flex flex-col gap-2">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">Coperto 2,00</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">Coperto € 2,00</p>
           <p className="text-[10px] font-bold uppercase tracking-widest text-darkGreen/70">
             {lang === 'it' ? 'Allergie o intolleranze alimentari? Chiedi allo staff.' : 'Allergies or food intolerances? Ask the staff.'}
           </p>
@@ -316,7 +277,7 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
       {/* Item Detail Modal */}
       {selectedItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-darkGreen/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-cream w-full max-w-sm border-2 border-gold p-6 md:p-10 shadow-2xl rounded-[2.5rem] relative animate-[fadeInUp_0.4s_ease-out] max-h-[90vh] overflow-y-auto scrollbar-hide">
+          <div className="bg-cream w-full max-w-sm border-2 border-gold p-6 md:p-10 shadow-2xl rounded-[2.5rem] relative animate-[fadeInUp_0.4s_ease-out] max-h-[90vh] overflow-y-auto">
             <button onClick={() => setSelectedItem(null)} className="absolute top-4 right-4 md:top-6 md:right-6 text-darkGreen/80 hover:text-darkGreen transition-colors p-3 bg-white/50 rounded-full"><X size={24} /></button>
             <div className="flex flex-col items-center text-center pt-4">
               <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-xl mb-6 flex-shrink-0">
@@ -324,7 +285,7 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
               </div>
               <h3 className="font-serif text-3xl font-bold text-darkGreen mb-2">{selectedItem.name}</h3>
               <p className="text-gold font-bold uppercase tracking-[0.2em] text-[10px] mb-4">{selectedItem.subCategory || selectedItem.category}</p>
-              <p className="font-serif italic text-darkGreen/90 leading-relaxed mb-6 text-base md:text-lg tracking-wide">{selectedItem.description}</p>
+              <p className="font-serif italic text-darkGreen/80 leading-relaxed mb-6">{selectedItem.description}</p>
 
               {/* ALCOHOL LEVEL */}
               {selectedItem.alcoholLevel !== undefined && selectedItem.alcoholLevel > 0 && (
@@ -356,12 +317,12 @@ const Menu: React.FC<{ lang: 'it' | 'en'; initialCategory?: string | null }> = (
                         <button 
                           key={idx} 
                           onClick={() => handlePairingClick(pairing)}
-                          className="font-serif font-medium text-darkGreen text-base md:text-lg border-b border-gold/30 pb-0.5 hover:text-gold hover:border-gold transition-colors tracking-wide"
+                          className="font-serif font-medium text-darkGreen text-sm border-b border-gold/30 pb-0.5 hover:text-gold hover:border-gold transition-colors"
                         >
                           {pairing}
                         </button>
                       ) : (
-                        <span key={idx} className="font-serif font-medium text-darkGreen/80 text-base md:text-lg border-b border-transparent pb-0.5 tracking-wide">
+                        <span key={idx} className="font-serif font-medium text-darkGreen/70 text-sm border-b border-transparent pb-0.5">
                           {pairing}
                         </span>
                       );

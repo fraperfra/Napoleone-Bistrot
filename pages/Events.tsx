@@ -1,10 +1,15 @@
 
 import React, { useState } from 'react';
-import { EVENTS } from '../data';
+import { useCMS } from '../context/CMSContext';
+import { EVENTS as STATIC_EVENTS } from '../data';
 import { Music, Calendar, Users, Star, ChefHat, Wine, Sparkles, MapPin, Phone, Mail, Check, ChevronDown } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const Events: React.FC<{ lang: 'it' | 'en' }> = ({ lang }) => {
+  const { events: cmsEvents } = useCMS();
+  // Merge static and CMS events, or prefer CMS if available
+  const EVENTS = cmsEvents.length > 0 ? cmsEvents : STATIC_EVENTS;
+  
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null);
   
   const seoTitle = "Sala Eventi a San Martino Buon Albergo (Verona) | Napoleone Bistrot";

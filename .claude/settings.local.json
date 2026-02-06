@@ -6,7 +6,12 @@
       "Bash(git push)",
       "Bash(copy \"C:\\\\Users\\\\FRANCESCO COPPOLA\\\\Desktop\\\\Napoleone Bistrot\\\\dist\\\\hf_20260202_113240_8848ce79-9a16-4dae-9a69-0a87ecbfe964.avif\" \"C:\\\\Users\\\\FRANCESCO COPPOLA\\\\Desktop\\\\Napoleone Bistrot\\\\public\\\\hero.avif\")",
       "Bash(npm run backup:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:napoleone-bistrot.vercel.app)",
+      "Bash(start:*)",
+      "Bash(npm run build:*)",
+      "Bash(timeout /t 60 /nobreak)"
     ]
   }
 }

@@ -247,8 +247,6 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-gold/10 text-center text-[10px] opacity-40 uppercase tracking-[0.2em]">
           &copy; 2024 Napoleone Bistrot &bull; Verona, Italia &bull; P.IVA 0123456789
-          <span className="mx-2">&bull;</span>
-          <button onClick={() => setActivePage('admin-dashboard')} className="hover:text-gold transition-colors">Admin CMS</button>
         </div>
       </footer>
       <CookieConsent lang={lang} />

@@ -7,14 +7,6 @@ export enum Category {
   Birre = 'Birre'
 }
 
-export interface Photo {
-  id: string;
-  url: string;
-  isMain: boolean;
-  generatedAt: string;
-  source: 'upload' | 'ai';
-}
-
 export interface MenuItem {
   id: string;
   name: string;
@@ -26,8 +18,7 @@ export interface MenuItem {
   isVegetarian?: boolean;
   isVegan?: boolean;
   isGlutenFree?: boolean;
-  image?: string; // @deprecated use images[0].url
-  images?: Photo[]; // New field for gallery
+  image?: string;
   alcoholLevel?: number; // 1-5 scale for drinks
   recommendedPairings?: string[]; // List of recommended drink/food names
 }
