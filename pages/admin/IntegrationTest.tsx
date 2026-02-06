@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DatabaseService, { ChangeLog } from '../../services/DatabaseService';
+import { Category, MenuItem } from '../../types';
 import { useCMS } from '../../context/CMSContext';
 import { Save, RefreshCw, CheckCircle, XCircle, Clock, Database } from 'lucide-react';
 
@@ -20,13 +21,13 @@ const IntegrationTest: React.FC = () => {
   }, []);
 
   const loadLogs = () => {
-    setLogs(DatabaseService.getChangeLog());
+    setLogs(DatabaseService.getHistory());
   };
 
   const runTests = async () => {
     setIsRunning(true);
     const newResults = [...testResults];
-    const updateResult = (index: number, status: 'success' | 'failure', message?: string) => {
+    const updateResult = (index: number, status: 'pending' | 'success' | 'failure', message?: string) => {
       newResults[index] = { ...newResults[index], status, message };
       setTestResults([...newResults]);
     };
@@ -34,25 +35,19 @@ const IntegrationTest: React.FC = () => {
     try {
       // Test 1: Save
       updateResult(0, 'pending', 'Salvataggio in corso...');
-      const testItem = {
+      const testItem: MenuItem = {
         id: `test-${Date.now()}`,
         name: 'Test Piatto',
         description: 'Descrizione test',
         price: 10,
-        category: 'Antipasti',
-        allergens: [],
-        available: true
+        category: Category.Bistrot,
+        allergens: []
       };
       
       const currentMenu = DatabaseService.loadMenu() || [];
       const updatedMenu = [...currentMenu, testItem];
-      const success = DatabaseService.saveMenu(updatedMenu);
-      
-      if (success) {
-        updateResult(0, 'success', 'Salvato correttamente nel LocalStorage');
-      } else {
-        throw new Error('Salvataggio fallito');
-      }
+      DatabaseService.saveMenu(updatedMenu);
+      updateResult(0, 'success', 'Salvato correttamente nel LocalStorage');
 
       // Test 2: Read
       const loadedMenu = DatabaseService.loadMenu();
@@ -66,7 +61,7 @@ const IntegrationTest: React.FC = () => {
 
       // Test 3: Persistenza Reload (Simulazione)
       // Non possiamo fare un vero reload qui, ma verifichiamo che i dati siano nel "disco" (localStorage)
-      const rawData = localStorage.getItem('napoleone_cms_menu_v2');
+      const rawData = localStorage.getItem('napoleone_cms_menu');
       if (rawData && rawData.includes(testItem.id)) {
         updateResult(2, 'success', 'Dato presente nel raw storage');
       } else {
@@ -81,7 +76,7 @@ const IntegrationTest: React.FC = () => {
         userId: 'Tester',
         newValue: testItem
       });
-      const newLogs = DatabaseService.getChangeLog();
+      const newLogs = DatabaseService.getHistory();
       if (newLogs.some(l => l.entityId === testItem.id)) {
         updateResult(3, 'success', 'Change log registrato');
       } else {

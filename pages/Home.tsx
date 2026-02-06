@@ -135,8 +135,8 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage, navigateToMenu }) => {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center relative z-10">
           <div className="gold-frame group rounded-3xl overflow-hidden shadow-2xl order-2 md:order-1">
             <img
-              src="https://placehold.co/800x800/1a251b/d4af37?text=Plating+Art"
-              alt="Plating"
+              src="/hero.jpg"
+              alt="Napoleone Bistrot"
               className="w-full grayscale group-hover:grayscale-0 transition-all duration-1000 rounded-2xl"
               loading="lazy"
             />
@@ -200,7 +200,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage, navigateToMenu }) => {
             {/* Feature Dish: Risotto (Large Card) */}
             <div className="lg:col-span-2 group relative h-auto min-h-[300px] overflow-hidden rounded-[3rem] shadow-xl border border-darkGreen/5 cursor-pointer" onClick={() => setActivePage('menu')}>
               <img
-                src="https://placehold.co/1200x800/1a251b/d4af37?text=Risotto+Amarone"
+                src="https://images.unsplash.com/photo-1543355177-5a3f4df1ed64?auto=format&fit=crop&q=80&w=1200&h=800"
                 alt="Risotto all'Amarone"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />

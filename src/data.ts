@@ -740,7 +740,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 12,
     category: Category.Bistrot,
     subCategory: 'Insalatone',
-    image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&q=80&w=400',
+    image: '/logo.jpg',
     allergens: ['Glutine (cereali)', 'Uova', 'Latte', 'Pesce', 'Senape'],
     recommendedPairings: ['Acqua Mood 0,5l', 'Custoza DOC']
   },

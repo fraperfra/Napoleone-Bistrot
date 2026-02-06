@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCMS } from '../../context/CMSContext';
-import { Event } from '../../types';
+import { Event } from '../../types.ts';
 import { 
   Plus, 
   Edit2, 

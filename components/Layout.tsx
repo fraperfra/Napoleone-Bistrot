@@ -192,10 +192,13 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, setActivePage, la
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 relative z-10">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 border-2 border-gold rounded-full flex items-center justify-center">
-                <span className="font-serif text-gold font-bold">N</span>
-              </div>
-              <span className="font-serif text-xl tracking-widest uppercase text-white">Napoleone</span>
+              <img 
+                src="/logo-long-white.png" 
+                alt="Napoleone Bistrot" 
+                className="h-10 md:h-12 lg:h-14 w-auto object-contain"
+                loading="eager"
+                decoding="async"
+              />
             </div>
             <p className="text-sm opacity-70 leading-relaxed italic font-serif">
               "L'eleganza della tradizione italiana incontra il calore dell'accoglienza veronese."

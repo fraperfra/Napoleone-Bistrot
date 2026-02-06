@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCMS } from '../../context/CMSContext';
-import { MenuItem, Category } from '../../types';
+import { MenuItem, Category } from '../../types.ts';
 import { 
   Plus, 
   Search, 

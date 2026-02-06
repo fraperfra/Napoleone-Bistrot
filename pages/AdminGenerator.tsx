@@ -23,7 +23,6 @@ const AdminGenerator: React.FC = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
-  const [apiKey, setApiKey] = useState(import.meta.env.VITE_OPENAI_API_KEY || '');
 
   // Styles and options configuration
   const options = {
@@ -100,26 +99,15 @@ const AdminGenerator: React.FC = () => {
   };
 
   const handleGenerate = async () => {
-    if (!apiKey) {
-      alert('Inserisci la tua API Key OpenAI nelle impostazioni o nel file .env');
-      return;
-    }
-
     setIsGenerating(true);
     
     try {
-      // Use proxy if available (development), otherwise try direct (might fail due to CORS)
-      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const endpoint = isLocal ? '/openai-api/images/generations' : 'https://api.openai.com/v1/images/generations';
-      
-      const response = await fetch(endpoint, {
+      const response = await fetch('/api/generate-image', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: "dall-e-3",
           prompt: generatedPrompt,
           n: 1,
           size: "1024x1024",
@@ -143,7 +131,12 @@ const AdminGenerator: React.FC = () => {
       }
     } catch (error) {
       console.error('Error generating image:', error);
-      alert(`Errore durante la generazione: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      const msg = error instanceof Error ? error.message : 'Unknown error';
+      if (msg.includes('OPENAI_API_KEY not configured')) {
+        alert('Inserisci la tua API Key OpenAI nelle impostazioni o nel file .env');
+      } else {
+        alert(`Errore durante la generazione: ${msg}`);
+      }
     } finally {
       setIsGenerating(false);
     }
@@ -192,19 +185,7 @@ const AdminGenerator: React.FC = () => {
             </h3>
             
             <div className="space-y-6">
-              {/* API Key Input (Hidden if using env var) */}
-              {!import.meta.env.VITE_OPENAI_API_KEY && (
-              <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-darkGreen/60 mb-2 block">OpenAI API Key</label>
-                <input 
-                  type="password" 
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="sk-..."
-                  className="w-full p-3 bg-cream/30 rounded-xl border border-darkGreen/10 focus:border-gold outline-none text-darkGreen"
-                />
-              </div>
-              )}
+              {/* API Key gestita lato server (Vercel Secret) */}
 
               {/* Style Settings */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
