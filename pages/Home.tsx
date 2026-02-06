@@ -9,22 +9,22 @@ import SEO from '../components/SEO';
 const instagramPosts = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=600",
+    image: "https://placehold.co/600x600/1a251b/d4af37?text=Napoleone+Social+1",
     link: "https://www.instagram.com/napoleonebistrot/"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=600",
+    image: "https://placehold.co/600x600/1a251b/d4af37?text=Napoleone+Social+2",
     link: "https://www.instagram.com/napoleonebistrot/"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=600",
+    image: "https://placehold.co/600x600/1a251b/d4af37?text=Napoleone+Social+3",
     link: "https://www.instagram.com/napoleonebistrot/"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=600",
+    image: "https://placehold.co/600x600/1a251b/d4af37?text=Napoleone+Social+4",
     link: "https://www.instagram.com/napoleonebistrot/"
   }
 ];
@@ -135,7 +135,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage, navigateToMenu }) => {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center relative z-10">
           <div className="gold-frame group rounded-3xl overflow-hidden shadow-2xl order-2 md:order-1">
             <img
-              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800"
+              src="https://placehold.co/800x800/1a251b/d4af37?text=Plating+Art"
               alt="Plating"
               className="w-full grayscale group-hover:grayscale-0 transition-all duration-1000 rounded-2xl"
               loading="lazy"
@@ -200,7 +200,7 @@ const Home: React.FC<HomeProps> = ({ lang, setActivePage, navigateToMenu }) => {
             {/* Feature Dish: Risotto (Large Card) */}
             <div className="lg:col-span-2 group relative h-auto min-h-[300px] overflow-hidden rounded-[3rem] shadow-xl border border-darkGreen/5 cursor-pointer" onClick={() => setActivePage('menu')}>
               <img
-                src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=1200"
+                src="https://placehold.co/1200x800/1a251b/d4af37?text=Risotto+Amarone"
                 alt="Risotto all'Amarone"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />

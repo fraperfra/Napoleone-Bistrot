@@ -6,20 +6,22 @@ import {
   CalendarDays, 
   Settings, 
   LogOut, 
-  Menu as MenuIcon,
+  Menu as MenuIcon, 
   X,
   ExternalLink,
-  Wand2
+  Wand2,
+  Database
 } from 'lucide-react';
 import MenuManager from './MenuManager';
 import EventManager from './EventManager';
 import DashboardHome from './DashboardHome';
 import AdminGenerator from '../AdminGenerator';
 import SettingsManager from './SettingsManager';
+import IntegrationTest from './IntegrationTest';
 
 const AdminDashboard: React.FC = () => {
   const { logout } = useCMS();
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'menu' | 'events' | 'settings' | 'generator'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'menu' | 'events' | 'settings' | 'generator' | 'test'>('dashboard');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const renderContent = () => {
@@ -34,6 +36,8 @@ const AdminDashboard: React.FC = () => {
         return <AdminGenerator />;
       case 'settings':
         return <SettingsManager />;
+      case 'test':
+        return <IntegrationTest />;
       default:
         return <DashboardHome />;
     }
@@ -81,8 +85,12 @@ const AdminDashboard: React.FC = () => {
           <NavItem id="menu" icon={UtensilsCrossed} label="Gestione Menu" />
           <NavItem id="events" icon={CalendarDays} label="Gestione Eventi" />
           <NavItem id="generator" icon={Wand2} label="AI Foto" />
-          <NavItem id="settings" icon={Settings} label="Impostazioni" />
         </nav>
+
+        <div className="space-y-2 mb-4">
+          <NavItem id="test" icon={Database} label="Test Sistema" />
+          <NavItem id="settings" icon={Settings} label="Impostazioni" />
+        </div>
 
         <div className="pt-6 border-t border-white/10 space-y-2">
             <a href="/" target="_blank" className="w-full flex items-center gap-3 px-4 py-3 text-white/70 hover:text-gold transition-colors">
