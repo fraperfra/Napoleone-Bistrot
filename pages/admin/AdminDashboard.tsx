@@ -72,7 +72,7 @@ const AdminDashboard: React.FC = () => {
 
       {/* Sidebar */}
       <aside className={`
-        fixed md:sticky top-0 h-screen w-64 bg-darkGreen text-white p-6 flex flex-col z-10 transition-transform duration-300
+        fixed md:sticky top-0 h-screen w-64 bg-darkGreen text-white p-6 flex flex-col z-40 transition-transform duration-300
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         <div className="mb-10 hidden md:block">
@@ -115,7 +115,7 @@ const AdminDashboard: React.FC = () => {
       {/* Overlay for mobile */}
       {isMobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-0 md:hidden"
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}

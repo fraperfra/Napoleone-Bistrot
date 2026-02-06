@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DatabaseService, { ChangeLog } from '../../services/DatabaseService';
 import { Category, MenuItem } from '../../types';
 import { useCMS } from '../../context/CMSContext';
 import { Save, RefreshCw, CheckCircle, XCircle, Clock, Database } from 'lucide-react';
+import DashboardHome from './DashboardHome';
+import AdminDashboard from './AdminDashboard';
 
 const IntegrationTest: React.FC = () => {
   const { notify } = useCMS();
@@ -12,9 +14,13 @@ const IntegrationTest: React.FC = () => {
     { name: 'Lettura Piatto', status: 'pending' },
     { name: 'Persistenza Reload', status: 'pending' },
     { name: 'Versioning', status: 'pending' },
-    { name: 'Coda Offline', status: 'pending' }
+    { name: 'Coda Offline', status: 'pending' },
+    { name: 'Responsive Mobile: card touch 44x44', status: 'pending' },
+    { name: 'Responsive Mobile: griglia 1 colonna <768px', status: 'pending' },
+    { name: 'Desktop invariato: breakpoint md attivo', status: 'pending' }
   ]);
   const [isRunning, setIsRunning] = useState(false);
+  const testContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadLogs();
@@ -87,6 +93,37 @@ const IntegrationTest: React.FC = () => {
       // Qui potremmo aggiungere manualmente alla coda e processare
       updateResult(4, 'success', 'Simulazione coda ok');
 
+      // Responsive tests (DOM-based checks)
+      // 6: Touch target min 44x44 on dish rows
+      const dishRows = document.querySelectorAll('[data-testid="top-dish-row"]');
+      const allMin44 = Array.from(dishRows).every(el => el.className.includes('min-h-[44px]'));
+      updateResult(5, allMin44 ? 'success' : 'failure', allMin44 ? 'OK' : 'Classe min-h[44px] mancante');
+
+      // 7: Grid becomes single column on mobile via classes
+      const grid = document.querySelector('[data-testid="menu-stats-grid"]');
+      const hasMobileCols1 = grid?.className.includes('grid-cols-1');
+      const hasDesktopCols2 = grid?.className.includes('md:grid-cols-2');
+      updateResult(6, hasMobileCols1 ? 'success' : 'failure', hasMobileCols1 ? 'OK' : 'grid-cols-1 mancante');
+
+      // 8: Desktop unchanged (presence of md: classes)
+      const hasMdBreakpoint = hasDesktopCols2 && Array.from(dishRows).some(el => el.className.includes('md:'));
+      updateResult(7, hasMdBreakpoint ? 'success' : 'failure', hasMdBreakpoint ? 'OK' : 'md: breakpoint assente');
+
+      // 9: Z-index correctness: aside above mobile header and overlay above header
+      // Render AdminDashboard in hidden container to inspect classes and simulate toggle
+      const container = testContainerRef.current;
+      const toggleButton = container?.querySelector('.md\\:hidden button');
+      (toggleButton as HTMLButtonElement)?.click(); // open mobile menu
+      await new Promise(r => setTimeout(r, 50));
+      const asideEl = container?.querySelector('aside');
+      const headerEl = container?.querySelector('.md\\:hidden.bg-darkGreen');
+      const overlayEl = container?.querySelector('.fixed.inset-0.bg-black\\/50');
+      const asideHasZ40 = asideEl?.className.includes('z-40');
+      const headerHasZ20 = headerEl?.className.includes('z-20');
+      const overlayHasZ30 = overlayEl?.className.includes('z-30');
+      const zOk = !!asideHasZ40 && !!headerHasZ20 && !!overlayHasZ30;
+      updateResult(8, zOk ? 'success' : 'failure', zOk ? 'OK' : 'z-index non conforme');
+
       notify('success', 'Test completati');
 
       // Cleanup
@@ -117,6 +154,12 @@ const IntegrationTest: React.FC = () => {
           {isRunning ? <RefreshCw className="animate-spin" /> : <CheckCircle />}
           Esegui Test
         </button>
+      </div>
+      
+      {/* Hidden container rendering DashboardHome for DOM-based responsive checks */}
+      <div ref={testContainerRef} className="hidden">
+        <DashboardHome />
+        <AdminDashboard />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

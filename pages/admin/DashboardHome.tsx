@@ -41,40 +41,40 @@ const DashboardHome: React.FC = () => {
   };
 
   return (
-    <div className="p-6 md:p-8">
-      <h1 className="text-3xl font-serif font-bold text-darkGreen mb-8">Dashboard</h1>
+    <div className="p-4 md:p-8 text-base md:text-sm">
+      <h1 className="text-2xl md:text-3xl font-serif font-bold text-darkGreen mb-6 md:mb-8">Dashboard</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         
         {/* Card 1: Top Dishes */}
-        <div className="bg-white p-6 rounded-2xl border border-darkGreen/5 shadow-sm hover:shadow-lg transition-all md:col-span-2 lg:col-span-1">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-3 rounded-xl bg-gold/10 text-darkGreen">
+        <div className="bg-white p-4 md:p-6 rounded-2xl border border-darkGreen/5 shadow-sm hover:shadow-lg transition-all md:col-span-2 lg:col-span-1" data-testid="top-dishes-card">
+          <div className="flex items-center gap-3 mb-4 md:mb-6">
+            <div className="p-3 rounded-xl bg-gold/10 text-darkGreen min-w-[44px] min-h-[44px] flex items-center justify-center">
               <Award size={24} />
             </div>
-            <h2 className="text-xl font-serif font-bold text-darkGreen">Piatti Più Richiesti</h2>
+            <h2 className="text-lg md:text-xl font-serif font-bold text-darkGreen">Piatti Più Richiesti</h2>
           </div>
           
           <div className="space-y-4">
             {topDishes.map((dish, index) => (
-              <div key={dish.id} className="flex items-center justify-between p-3 rounded-xl hover:bg-cream/30 transition-colors group">
-                <div className="flex items-center gap-4">
-                  <span className="w-6 h-6 flex items-center justify-center rounded-full bg-darkGreen text-gold text-xs font-bold">
+              <div key={dish.id} className="flex items-center justify-between p-3 md:p-3 rounded-xl hover:bg-cream/30 transition-colors group min-h-[44px]" data-testid="top-dish-row">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <span className="w-8 h-8 md:w-6 md:h-6 flex items-center justify-center rounded-full bg-darkGreen text-gold text-sm md:text-xs font-bold">
                     {index + 1}
                   </span>
                   <div>
-                    <h3 className="font-bold text-darkGreen">{dish.name}</h3>
-                    <p className="text-xs text-darkGreen/60">{dish.category}</p>
+                    <h3 className="font-bold text-darkGreen text-base md:text-sm">{dish.name}</h3>
+                    <p className="text-base md:text-xs text-darkGreen/60">{dish.category}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-1.5 w-24 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-2 md:h-1.5 w-24 bg-gray-100 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-gold rounded-full" 
                       style={{ width: `${Math.min((dish.selectionCount / 200) * 100, 100)}%` }}
                     />
                   </div>
-                  <span className="text-sm font-bold text-darkGreen">{dish.selectionCount}</span>
+                  <span className="text-base md:text-sm font-bold text-darkGreen">{dish.selectionCount}</span>
                 </div>
               </div>
             ))}
@@ -83,29 +83,29 @@ const DashboardHome: React.FC = () => {
         </div>
 
         {/* Card 2: Menu Aggregates */}
-        <div className="bg-white p-6 rounded-2xl border border-darkGreen/5 shadow-sm hover:shadow-lg transition-all">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-3 rounded-xl bg-green-100 text-green-700">
+        <div className="bg-white p-4 md:p-6 rounded-2xl border border-darkGreen/5 shadow-sm hover:shadow-lg transition-all">
+          <div className="flex items-center gap-3 mb-4 md:mb-6">
+            <div className="p-3 rounded-xl bg-green-100 text-green-700 min-w-[44px] min-h-[44px] flex items-center justify-center">
               <UtensilsCrossed size={24} />
             </div>
-            <h2 className="text-xl font-serif font-bold text-darkGreen">Statistiche Menu</h2>
+            <h2 className="text-lg md:text-xl font-serif font-bold text-darkGreen">Statistiche Menu</h2>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4" data-testid="menu-stats-grid">
             <div className="p-4 bg-cream/30 rounded-xl">
-              <p className="text-darkGreen/60 text-sm uppercase tracking-wider mb-1">Totale Piatti</p>
-              <p className="text-3xl font-serif font-bold text-darkGreen">{menuStats.totalItems}</p>
+              <p className="text-darkGreen/60 text-base md:text-sm uppercase tracking-wider mb-1">Totale Piatti</p>
+              <p className="text-2xl md:text-3xl font-serif font-bold text-darkGreen">{menuStats.totalItems}</p>
             </div>
             <div className="p-4 bg-cream/30 rounded-xl">
-              <p className="text-darkGreen/60 text-sm uppercase tracking-wider mb-1">Categorie</p>
-              <p className="text-3xl font-serif font-bold text-darkGreen">{menuStats.categories}</p>
+              <p className="text-darkGreen/60 text-base md:text-sm uppercase tracking-wider mb-1">Categorie</p>
+              <p className="text-2xl md:text-3xl font-serif font-bold text-darkGreen">{menuStats.categories}</p>
             </div>
-            <div className="col-span-2 p-4 bg-cream/30 rounded-xl flex items-center justify-between">
+            <div className="col-span-1 md:col-span-2 p-4 bg-cream/30 rounded-xl flex items-center justify-between">
               <div>
-                <p className="text-darkGreen/60 text-sm uppercase tracking-wider mb-1">Prezzo Medio</p>
-                <p className="text-3xl font-serif font-bold text-darkGreen">€ {menuStats.avgPrice}</p>
+                <p className="text-darkGreen/60 text-base md:text-sm uppercase tracking-wider mb-1">Prezzo Medio</p>
+                <p className="text-2xl md:text-3xl font-serif font-bold text-darkGreen">€ {menuStats.avgPrice}</p>
               </div>
-              <div className="h-10 w-10 rounded-full bg-darkGreen/10 flex items-center justify-center text-darkGreen">
+              <div className="h-11 w-11 md:h-10 md:w-10 rounded-full bg-darkGreen/10 flex items-center justify-center text-darkGreen">
                 <TrendingUp size={20} />
               </div>
             </div>
